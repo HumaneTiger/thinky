@@ -1,0 +1,76 @@
+#desk {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/desk/surface.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+
+.bgimg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 1px 3px rgb(97, 82, 75));
+  transition: filter 0.2s ease-out;
+}
+
+.desk--item {
+  transition: transform 0.2s ease-out;
+}
+
+.desk--item:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+.desk--item:hover .bgimg {
+  filter: drop-shadow(0 3px 6px rgb(97, 82, 75));
+}
+
+#letter {
+  position: absolute;
+  left: 590px;
+  top: 350px;
+  width: 745px;
+  height: 348px;
+}
+
+#letter-police {
+  position: absolute;
+  left: 1090px;
+  top: 50px;
+  width: 719px;
+  height: 993px;
+}
+
+#letter-police .content {
+  z-index: 2;
+  position: relative;
+  line-height: 0.95em;
+  font-size: 21px;
+}
+
+#letter.aside {
+  transform: translate(-220px, -50px) rotate(-10deg);
+}
+#letter.aside .button {
+  display: none;
+}
+
+#letter-police.out {
+  transform: translateX(50vw) rotate(30deg);
+}
+
+#letter .button {
+  position: absolute;
+  top: 234px;
+  left: 275px;
+  opacity: 0;
+}
+
+#letter:hover .button {
+  opacity: 1;
+}

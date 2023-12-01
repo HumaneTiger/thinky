@@ -1,0 +1,157 @@
+#player {
+  position: absolute;
+  left: 666px;
+  top: 300px;
+  width: 114px;
+  height: 105px;
+  background-image: url('../img/character/frame-all.png');
+  background-repeat: no-repeat;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-size: 456px 105px;
+}
+
+#player.flap {
+  animation: flap 0.1s steps(4) infinite;
+}
+
+@keyframes flap {
+ from { background-position:    0px; }
+   to { background-position: -456px; }
+}
+
+#orb-indicator,
+#player-indicator {
+  position: absolute;
+  border: 2px rgba(255, 0, 255, 1) dotted;
+  color: black;
+}
+#top-indicator,
+#bottom-indicator {
+  position: absolute;
+  border: 2px rgba(0, 255, 255, 1) dotted;
+  width: 140px;
+  height: 2px;
+}
+#orb-indicator {
+  width:60px;
+  height: 60px;
+}
+
+#player .player {
+  width: 100%;
+  height: auto;
+}
+
+#player .glow {
+  background-image: url(../img/character/glow-static.png);
+  background-position: 1px 16px;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  z-index: 2;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.pulse-anim {
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes pulse-2 {
+  0% {
+    transform: scale(0.3);
+    opacity: 0.2;
+  }
+  33% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  66% {
+    transform: scale(0.4);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+}
+
+.pulse-anim-2 {
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-name: pulse-2;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes pulse-3 {
+  0% {
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(0.4);
+  }
+  100% {
+    transform: scale(0.2);
+  }
+}
+
+.pulse-anim-3 {
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-name: pulse-3;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+
+.bounce {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes dead {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(-260deg) translate(300px, 0) scale(0.4);
+    opacity: 0;
+  }
+}
+
+.dead {
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-name: dead;
+}

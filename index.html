@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="EN">
+
+  <head>
+      <meta charset="utf-8">
+      <title>Firefly</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" type="image/png" href="favicon.png">
+
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="css/ui.css">
+      <link rel="stylesheet" href="css/desk.css">
+      <link rel="stylesheet" href="css/persons.css">
+      <link rel="stylesheet" href="css/places.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  </head>
+
+  <!-- 
+    CREDITS:
+  -->
+
+  <body>
+    <div id="viewport">
+      <main>
+        <div id="controls">
+          <div class="controls--top">
+            <div class="button button--white" id="button-desk">Desk</div>
+            <div class="button button--blue" id="button-persons">Persons</div>
+            <div class="button button--peach" id="button-places">Places</div>  
+          </div>
+          <div class="controls--bottom">
+            <div class="button button--peach" id="button-end-day">End Day</div>
+          </div>
+        </div>
+        <div id="desk">
+          <div id="letter" class="desk--item">
+            <img src="./img/desk/letter-intro.png" class="bgimg">
+            <div class="button button--white button--noshadow button--smaller" id="button-letter-open">Open</div>
+          </div>
+          <div id="letter-police" class="desk--item out">
+            <img src="./img/desk/letter-temp.png" class="bgimg">
+            <div class="content spacing--big font--typewriter">
+              <p>
+                THE CASE:
+              </p>
+              <p>
+                On a Saturday morning Parker Bailey arrives at his diner to prepare for the breakfast rush. He notices across the street that Nico’s Bakery is still closed. The lights are off and no one has been there at all that morning as far as Parker can tell. This is strange. For as long as he can remember, Nico has always been the first to open. He can’t remember the last time Nico’s lights weren’t on when he got to the Diner, at least not without Nico updating the shop owners’ group chat the night before.
+              </p>
+              <p>
+                Parker crosses the street and tries to look inside the shop. The sign is still flipped to closed and it’s completely dark inside. He leans against the door, only to have it swing open. Parker steps inside, and is met with broken glass all over the floor.
+              </p>
+              <p>
+                The bakery has been thoroughly trashed. The display cases are all shattered, tables and chairs are overturned and broken and plants and decor have been thrown. The cash register is open and empty and the chalk board has been torn off of the wall, yesterday’s specials still written in Nico’s crisp handwriting. There’s a trail of blood leading to the back room.
+              </p>
+              <p>
+                Parker backs out of the shop and calls the police. The store is taped off, and the investigation begins.
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div id="all-audio">
+      <audio class="music-ambient-1" src="./audio/grotto.mp3" preload></audio>
+      <audio class="sfx-collect" src="./audio/fx/collect.mp3" preload></audio>
+      <audio class="sfx-shuffle-paper" src="./audio/fx/shuffle-paper.mp3" preload></audio>
+    </div>
+    <script src="js/init.js" type="module"></script>    
+  </body>
+</html>

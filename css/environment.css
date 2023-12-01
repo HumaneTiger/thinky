@@ -1,0 +1,263 @@
+.autoscroll {
+  width: 3972px; /* 1986x2 */
+  height: 760px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-repeat: repeat-x;
+}
+
+.vignette {
+  width: 3600px;
+  height: 1900px;
+  position: absolute;
+  top: -630px;
+  left: -1117px;
+  background-repeat: no-repeat;
+  transform: scale(1.3, 1.2);
+  transition: transform 0.2s ease-out, opacity 3s ease-out;
+  box-sizing: content-box;
+  border: 51px black solid;
+}
+
+#playground {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 6;
+}
+
+#walls {
+  width: 30000px;
+  height: 760px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+
+.orb,
+.treasure,
+#walls .wall-1,
+#walls .wall-2 {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+#walls .wall-1.bottom::after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  width: 160px;
+  height: 35px;
+  background-image: url(../img/environment/wall-1-foilage.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+.orb {
+  width: 47px;
+  height: 47px;
+  background-image: url(../img/items/light-orb.png);
+  background-repeat: no-repeat;
+  z-index: 10;
+}
+.orb-glow {
+  position: absolute;
+  top: -47px;
+  left: -47px;
+  width: 141px;
+  height: 141px;
+  background-image: url(../img/items/light-orb-bottom.png);
+  background-repeat: no-repeat;
+  z-index: 11;
+}
+.treasure {
+  width: 47px;
+  height: 47px;
+  background-image: url(../img/items/star.png);
+  background-repeat: no-repeat;
+  z-index: 10;
+  transition: bottom 0.2s ease-out;
+}
+#walls .treasure.collected {
+  bottom: 780px;
+}
+.treasure.type-1 {
+  filter: hue-rotate(0);
+}
+.treasure.type-2 {
+  filter: hue-rotate(-5deg);
+}
+.treasure.type-3 {
+  filter: hue-rotate(5deg);
+}
+.treasure-glow {
+  position: absolute;
+  top: -47px;
+  left: -47px;
+  width: 141px;
+  height: 141px;
+  background-image: url(../img/items/star-glow.png);
+  background-repeat: no-repeat;
+  z-index: 11;
+}
+.orb.top-1 {
+  top: 160px;
+}
+.orb.top-2 {
+  top: 220px;
+}
+.orb.top-3 {
+  top: 280px;
+}
+.orb.top-4 {
+  top: 340px;
+}
+
+.treasure.bottom-1 {
+  bottom: 160px;
+}
+.treasure.bottom-2 {
+  bottom: 220px;
+}
+.treasure.bottom-3 {
+  bottom: 280px;
+}
+.treasure.bottom-4 {
+  bottom: 340px;
+}
+
+#walls .wall-1.top,
+#walls .wall-2.top {
+  transform: scale(-1, -1);
+}
+
+#walls .wall-1 {
+  background-image: url(../img/environment/wall-1.png);
+  width: 160px;
+  height: 410px;
+  color: white;
+}
+#walls .wall-2 {
+  background-image: url(../img/environment/wall-2.png);
+  width: 320px;
+  height: 410px;
+}
+
+#walls .plant {
+  position: absolute;
+  height: 525px;
+  transform: translateX(-20px);
+  z-index: 0;
+}
+
+.top-4 {
+  top: -120px;
+}
+.top-3 {
+  top: -180px;
+}
+.top-2 {
+  top: -240px;
+}
+.top-1 {
+  top: -300px;
+}
+
+.bottom-4 {
+  bottom: -120px;
+}
+.bottom-3 {
+  bottom: -180px;
+}
+.bottom-2 {
+  bottom: -240px;
+}
+.bottom-1 {
+  bottom: -300px;
+}
+
+#front-plants {
+  background-image: url(../img/environment/front-plants.png);
+  animation-duration: 4s;
+  z-index: 10;
+}
+
+#front-vignette {
+  background-image: url(../img/environment/vignette-front.png);
+  z-index: 9;
+  opacity: 0.7;
+}
+
+#back-vignette {
+  background-image: url(../img/environment/vignette-back.png);
+  z-index: 5;
+  opacity: 0.9;
+}
+
+#final-blocker {
+  background-color: black;
+  opacity: 0;
+  z-index: 10;
+}
+#final-blocker.active {
+  opacity: 1;
+}
+
+#glow-plants {
+  background-image: url(../img/environment/glow-plants.png);
+  animation-duration: 6s;
+  z-index: 3;
+}
+
+#creeper-plants {
+  background-image: url(../img/environment/creeper-plants.png);
+  animation-duration: 8s;
+  z-index: 2;
+}
+
+#background {
+  background-image: url(../img/environment/background.jpg);
+  animation-duration: 10s;
+  z-index: 1;
+}
+
+@keyframes autoscroll {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -1986px;
+  }
+}
+
+@keyframes wallscroll {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -30000px;
+  }
+}
+
+.autoscroll-anim {
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-name: autoscroll;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+.walls-anim {
+  animation-duration: 70s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-name: wallscroll;
+  animation-direction: normal;
+}

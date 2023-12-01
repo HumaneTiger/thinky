@@ -1,0 +1,268 @@
+.is--hidden {
+  display: none !important;
+}
+
+.nospace {
+  margin: 0;
+}
+
+#controls .controls--top {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  z-index: 5;
+}
+
+#controls .controls--bottom {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  z-index: 5;
+}
+
+.button {
+  cursor: pointer;
+  font-size: 28px;
+  font-family: 'Lora';
+  font-weight: bold;
+  color: rgb(97, 82, 75);
+  text-align: center;
+  width: 196px;
+  height: 72px;
+  display: inline-block;
+  line-height: 2.4em;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: transform 0.1s ease-out, opacity 0.3s ease-out;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.button--smaller {
+  transform: scale(0.7);
+}
+.button--smaller:hover {
+  transform: scale(0.8);
+}
+
+.button--white {
+  background-image: url(../img/ui/button-3.png);
+}
+.button--blue {
+  background-image: url(../img/ui/button-2.png);
+}
+.button--peach {
+  background-image: url(../img/ui/button-1.png);
+}
+
+.button--white.button--noshadow {
+  background-image: url(../img/ui/button-3-ns.png);
+}
+.button--blue.button--noshadow {
+  background-image: url(../img/ui/button-2-ns.png);
+}
+.button--peach.button--noshadow {
+  background-image: url(../img/ui/button-1-ns.png);
+}
+
+.spacing--big {
+  padding: 96px;
+}
+
+.font--typewriter {
+  font-family: TypeWriter;
+}
+
+
+#play-again {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+#start-screen {
+  transition: opacity 1s ease-out;
+  z-index: 21;
+  opacity: 0;
+}
+#start-screen.active {
+  opacity: 1;
+}
+#start-screen .menu {
+  font-size: 42px;
+  color: #303a3e;
+  text-shadow: 0 1px 2px #f8f8fe;
+  list-style-type: none;
+  margin: 0;
+}
+#start-screen .menu li {
+  margin: 0.5em 0;
+}
+span.button {
+  cursor: pointer;
+  font-size: 42px;
+  color: #303a3e;
+  text-shadow: 0 1px 2px #f8f8fe;
+  width: 227px;
+  height: 86px;
+  display: inline-block;
+  line-height: 1.9em;
+  background-image: url(../img/ui/button.png);
+  background-repeat: no-repeat;
+  opacity: 0.75;
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
+span.button.special {
+  background-image: url(../img/ui/button-special.png);
+}
+span.button:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+span.button.switch {
+  line-height: 0.9em;
+  font-size: 32px;
+  padding-top: 12px;
+}
+#play-again.active {
+  opacity: 1;
+}
+
+#countdown,
+.ui-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+.ui-overlay {
+  background-image: url(../img/ui/homescreen.jpg);
+  background-repeat: no-repeat;
+  background-size: auto 80%;
+  background-position: center center;
+  background-color: black;
+}
+
+#countdown .inner,
+.ui-overlay .inner {
+  color: #d7d7e3;
+  text-shadow: black 0 0 30px;
+  font-size: 60px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 1440px;
+  transform-origin: top left;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease-out;
+  transform: translate(-50%, -50%);
+}
+
+#countdown p {
+  margin: 0;
+  font-size: 50px;
+}
+
+#countdown .big {
+  font-size: 120px;
+}
+
+#countdown {
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+#countdown.go {
+  opacity: 0;
+  transform: scale(4);
+}
+
+.ui-overlay .small {
+  font-size: 40px;
+}
+
+#score {
+  z-index: 15;
+  color: #d7d7e3;
+  font-size: 50px;
+  text-align: center;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 100%;
+}
+
+#stars {
+  z-index: 15;
+  text-align: center;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+}
+
+#stars .treasure {
+  display: inline-block;
+  position: relative;
+  transform: scale(0.6);
+  margin-right: -20px;
+}
+
+#scare-face {
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  width: 706px;
+  height: 955px;
+  background-image: url(../img/ui/scare-face.png);
+  background-repeat: no-repeat;
+  transform: translate(-50%, -50%) scale(0.1);
+  opacity: 0;
+  transition: transform 0.2s ease-out, opacity 0.1s ease-out;
+}
+
+#scare-face.omg {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#scare-face.fade-out {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.scary-grave {
+  position: absolute;
+  height: 525px;
+  transform: translate(-30px, -85px);
+  z-index: 0;
+  width: 254px;
+  background-image: url(../img/items/scary-grave.png);
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+#special  {
+  text-align: center;
+}
+#special img {
+  margin-bottom: -65px;
+}
+p.warning {
+  font-size: 18px;
+}
+
+p.warning strong {
+  color: #a376d7;
+}
+
+.button.back {
+  transform: scale(0.7);
+}
+.inner.out {
+  transform: translate(100vw, -50%);
+}
