@@ -25,7 +25,6 @@ var game = {
 export default {
   
   init: function() {
-    this.preloadImages();
   },
 
   getGameProp: function(prop) {
@@ -43,44 +42,6 @@ export default {
     game.gameOver = false;
     game.gamePaused = true;
     game.particleSpeed = 0;
-  },
-
-  setDifficulty: function(difficulty) {
-    game.difficulty = difficulty;
-    if (difficulty === 'normal') {
-      game.gravity = 0.1;
-      game.velocityChange = -2.5;
-      game.orbSpawn = 25;
-      game.scoreValue = 1;
-    } else if (difficulty === 'easy') {
-      game.gravity = 0.05;
-      game.velocityChange = -1.5;
-      game.orbSpawn = 15;
-      game.scoreValue = 0.5;
-    } else if (difficulty === 'hard') {
-      game.gravity = 0.15;
-      game.velocityChange = -2.8;
-      game.orbSpawn = 55;
-      game.scoreValue = 1.5;
-    }
-  },
-
-  preloadImages: function() {
-    let preloadList = [
-      '/character/frame-all.png',
-      '/ui/scare-face.png',
-      '/ui/logo.png',
-      '/environment/creeper-plants.png',
-      '/environment/front-plants.png',
-      '/environment/glow-plants.png',
-      '/environment/vignette-back.png',
-      '/environment/vignette-front.png',
-      '/items/scary-grave.png'
-    ];
-    let images = [];
-    for (const img in preloadList) {
-      images[img] = new Image();
-      images[img].src = '../img' + preloadList[img];
-    };
   }
+
 }

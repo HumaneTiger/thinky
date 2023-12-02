@@ -1,7 +1,9 @@
+import Audio from './audio.js'
 import Props from './props.js'
 import Start from './start.js'
-import Player from './player.js'
-import Audio from './audio.js'
+
+import Persons from './persons.js'
+import Desk from './desk.js'
 
 const viewport = document.querySelector('#viewport main');
 
@@ -19,11 +21,11 @@ export default {
     document.body.addEventListener("pointerdown", this.handleKeydown.bind(this));
     document.body.addEventListener("click", this.handleClick.bind(this));
     document.body.addEventListener("mouseover", this.handleHover.bind(this));
-
-    document.body.addEventListener("contextmenu", (ev) => { 
-      //ev.preventDefault();
-    });
     */
+
+    /*document.body.addEventListener("contextmenu", (ev) => { 
+      //ev.preventDefault();
+    });*/
 
     this.resizeViewport();
 
@@ -33,25 +35,13 @@ export default {
     const viewWidth = window.innerWidth,
           viewHeight = window.innerHeight;
     let scaleFactor;
-    /*if (viewWidth / viewHeight < 1.78) {
-      scaleFactor = viewWidth / 2135;
-    } else {
-      scaleFactor = viewHeight / 1200;
-    }*/
+
     scaleFactor = viewHeight / 1080;
 
     viewport.style.transform = 'scale3d('+scaleFactor+','+scaleFactor+','+1+')';
   },
 
   handleClick: function(ev) {
-    var target = ev.target;
-    if (target && target.classList.contains('button') && target.closest('.desk--item')) {
-      ev.preventDefault();
-      Audio.sfx('shuffle-paper', 0, 0.1);
-      //desk.js makes sense
-      document.getElementById('letter-police').classList.remove('out');
-      document.getElementById('letter').classList.add('aside');
-    }
   },
 
   /*

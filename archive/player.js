@@ -1,6 +1,6 @@
-import Props from './props.js'
-import Audio from './audio.js'
-import Ui from './ui.js'
+import Props from '../js/props.js'
+import Audio from '../js/audio.js'
+import Ui from '../js/ui.js'
 
 let velocityY = 0;
 
