@@ -3,6 +3,8 @@ import Ui from './ui.js'
 import Desk from './desk.js'
 import Persons from './persons.js'
 import Places from './places.js'
+import EndDay from './end-day.js'
+import Assistants from './assistants.js'
 
 let preloadList = [
   '/desk/letter-blank.png', '/desk/letter-intro.png', '/desk/letter-temp.png', '/desk/surface.jpg', 
@@ -23,5 +25,7 @@ let preloadList = [
   Desk.init();
   Persons.init();
   Places.init();
+  Assistants.init();
+  EndDay.init();
   preloadImages();
 }

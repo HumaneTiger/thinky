@@ -23,10 +23,8 @@ html, body {
 }
 
 body {
-  font-family: 'Kalam', cursive;
-  font-size: 24px;
-  background-color: black;
   overflow: hidden;
+  background: #4d4234 url(../img/ui/stretchground.jpg) 0 0 repeat-x;
 }
 
 body * {

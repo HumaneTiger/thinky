@@ -12,6 +12,8 @@
       <link rel="stylesheet" href="css/desk.css">
       <link rel="stylesheet" href="css/persons.css">
       <link rel="stylesheet" href="css/places.css">
+      <link rel="stylesheet" href="css/assistants.css">
+      <link rel="stylesheet" href="css/end-day.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +27,15 @@
   <body>
     <div id="viewport">
       <main>
+        <div id="end-day" class="out">
+          <h1 class="headline">
+            E<span class="headline--smaller">nd of</span> D<span class="headline--smaller">ay</span> <span class="day">1</span>
+          </h1>
+          <div class="button button--peach" id="button-lets-go">Let's go Home</div>
+        </div>
+        <div id="day-count" class="headline">
+          D<span class="headline--smaller">ay</span> <span class="day">1</span>
+        </div>
         <div id="controls">
           <div class="controls--top">
             <div class="button button--white" id="button-desk">Desk</div>
@@ -61,12 +72,23 @@
             </div>
           </div>
         </div>
+        <div id="persons" class="out--right">
+          <img src="./img/persons/persons-temp.png">
+        </div>
+        <div id="places" class="out--right">
+          <img src="./img/places/places-temp.png">
+        </div>
+        <div id="assistants" class="out--left">
+          <img src="./img/assistants/assitants-temp.png">
+        </div>
       </main>
     </div>
     <div id="all-audio">
       <audio class="music-ambient-1" src="./audio/grotto.mp3" preload></audio>
       <audio class="sfx-collect" src="./audio/fx/collect.mp3" preload></audio>
       <audio class="sfx-shuffle-paper" src="./audio/fx/shuffle-paper.mp3" preload></audio>
+      <audio class="sfx-swoosh" src="./audio/fx/swoosh.mp3" preload></audio>
+      <audio class="sfx-click" src="./audio/fx/click.wav" preload></audio>
     </div>
     <script src="js/init.js" type="module"></script>    
   </body>

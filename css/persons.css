@@ -1,0 +1,27 @@
+#persons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/desk/surface.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  transition: transform 0.2s ease-out;
+}
+
+#persons.out--left {
+  transform: translateX(-1920px);
+}
+
+#persons.out--right {
+  transform: translateX(1920px);
+}
+
+#persons {
+  padding: 180px 100px 180px 300px;
+  text-align: center;
+}
+
+#persons img {
+  transform: scale(1.1);
+}

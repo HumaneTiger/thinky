@@ -1,0 +1,28 @@
+#end-day {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(97, 18, 55, 0.9), rgba(44, 10, 30, 0.95));
+  transition: opacity 1s ease-out;
+  opacity: 1;
+  z-index: 10;
+}
+
+#end-day.out {
+  left: -100vw;
+  opacity: 0;
+}
+
+#end-day h1 {
+  padding-top: 16px;
+  text-align: center;
+}
+
+#button-lets-go {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  margin-left: -98px;
+  font-size: 24px;
+  line-height: 2.8em;
+}

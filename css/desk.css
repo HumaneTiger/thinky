@@ -4,11 +4,24 @@
   height: 100%;
   background-image: url(../img/desk/surface.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   background-position: center center;
+  transition: transform 0.2s ease-out;
 }
 
-.bgimg {
+#desk.out--left {
+  transform: translateX(-1920px);
+}
+
+#desk.out--right {
+  transform: translateX(1920px);
+}
+
+.desk--item {
+  transition: transform 0.2s ease-out;
+}
+
+.desk--item .bgimg {
   position: absolute;
   top: 0;
   left: 0;
@@ -16,10 +29,6 @@
   height: auto;
   filter: drop-shadow(0 1px 3px rgb(97, 82, 75));
   transition: filter 0.2s ease-out;
-}
-
-.desk--item {
-  transition: transform 0.2s ease-out;
 }
 
 .desk--item:hover {
@@ -61,7 +70,7 @@
 }
 
 #letter-police.out {
-  transform: translateX(50vw) rotate(30deg);
+  transform: translateX(70vw) rotate(30deg);
 }
 
 #letter .button {

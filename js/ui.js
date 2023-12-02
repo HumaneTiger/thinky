@@ -2,10 +2,14 @@ import Audio from './audio.js'
 import Props from './props.js'
 import Start from './start.js'
 
-import Persons from './persons.js'
 import Desk from './desk.js'
+import Persons from './persons.js'
+import Places from './places.js'
+import EndDay from './end-day.js'
+import Assistants from './assistants.js'
 
 const viewport = document.querySelector('#viewport main');
+let currentPosition = 1;
 
 let uiActive = false;
 
@@ -16,16 +20,7 @@ export default {
     window.addEventListener('resize', this.resizeViewport);
     document.body.addEventListener('click', this.handleClick.bind(this));
 
-    /*
-    document.body.addEventListener("keydown", this.handleKeydown.bind(this));
-    document.body.addEventListener("pointerdown", this.handleKeydown.bind(this));
-    document.body.addEventListener("click", this.handleClick.bind(this));
-    document.body.addEventListener("mouseover", this.handleHover.bind(this));
-    */
-
-    /*document.body.addEventListener("contextmenu", (ev) => { 
-      //ev.preventDefault();
-    });*/
+    // document.body.addEventListener("contextmenu", (ev) => { ev.preventDefault(); });
 
     this.resizeViewport();
 
@@ -42,6 +37,62 @@ export default {
   },
 
   handleClick: function(ev) {
+    var target = ev.target;
+    if (target && target.classList.contains('button')) {
+      if (target.id === 'button-desk') this.switchToDesk();
+      if (target.id === 'button-persons') this.switchToPersons();
+      if (target.id === 'button-places') this.switchToPlaces();
+      if (target.id === 'button-end-day') this.endDay();
+      if (target.id === 'button-lets-go') this.nextDay();
+    }
+  },
+
+  switchToDesk: function() {
+    if (currentPosition !== 1) {
+      Audio.sfx('swoosh');
+      Persons.hide('right'); // immer rechts raus
+      Places.hide('right'); // immer rechts raus
+      Assistants.hide();
+      Desk.show();
+      currentPosition = 1;  
+    }
+  },
+
+  switchToPersons: function() {
+    if (currentPosition !== 2) {
+      Audio.sfx('swoosh');
+      if (currentPosition > 2) {
+        Places.hide('right'); // nach rechts raus
+        Persons.hide('left'); // von links rein
+      } else {
+        Desk.hide('left'); // nach links raus
+        Persons.hide('right'); // von rechts rein
+      }
+      Persons.show();
+      Assistants.show();
+      currentPosition = 2;
+    }
+  },
+
+  switchToPlaces: function() {
+    if (currentPosition !== 3) {
+      Audio.sfx('swoosh');
+      Desk.hide('left'); // immer links raus
+      Persons.hide('left'); // immer links raus
+      Places.show();
+      Assistants.show();
+      currentPosition = 3;
+    }
+  },
+
+  endDay: function() {
+    Audio.sfx('click');
+    EndDay.show();
+  },
+
+  nextDay: function() {
+    Audio.sfx('click');
+    EndDay.nextDay();
   },
 
   /*

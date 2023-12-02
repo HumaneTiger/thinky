@@ -15,9 +15,35 @@
 
 #controls .controls--bottom {
   position: absolute;
-  right: 40px;
+  right: 60px;
   bottom: 40px;
   z-index: 5;
+}
+
+#day-count {
+  position: absolute;
+  right: 60px;
+  top: 16px;
+  z-index: 5;
+}
+
+.headline {
+  font-family: 'Lora';
+  font-weight: bold;
+  font-size: 76px;
+  text-transform: uppercase;
+  background-image: linear-gradient(#F6EEE2, #F3D9BD);
+  filter: drop-shadow(0 2px 4px rgb(97, 82, 75));
+  background-size: 100%;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  margin: 0;
+}
+
+.headline .headline--smaller {
+  font-size: 60px;
 }
 
 .button {
@@ -32,13 +58,18 @@
   display: inline-block;
   line-height: 2.4em;
   background-repeat: no-repeat;
-  opacity: 1;
-  transition: transform 0.1s ease-out, opacity 0.3s ease-out;
+  filter: brightness(1);
+  transition: transform 0.1s ease-out, opacity 0.3s ease-out, filter 0.1s ease-out;
 }
 
 .button:hover {
   transform: scale(1.1);
-  opacity: 1;
+  filter: brightness(1.1);
+}
+
+.button:active {
+  transform: scale(1.05);
+  filter: brightness(1.05);
 }
 
 .button--smaller {
