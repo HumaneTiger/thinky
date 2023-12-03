@@ -8,6 +8,7 @@ export default {
   
   init: function() {
     document.body.addEventListener('click', this.handleClick.bind(this));
+    document.body.addEventListener('pointerdown', this.handlePointerDown.bind(this));
   },
 
   handleClick: function(ev) {
@@ -17,6 +18,15 @@ export default {
       Audio.sfx('shuffle-paper');
       document.getElementById('letter-police').classList.remove('out');
       document.getElementById('letter').classList.add('aside');
+    }
+  },
+
+  handlePointerDown: function(ev) {
+    var target = ev.target;
+    if (target && target.classList.contains('clue') && target.closest('.desk--item')) {
+      ev.preventDefault();
+      Audio.sfx('pick-up');
+      target.classList.add('extracted');
     }
   },
 
