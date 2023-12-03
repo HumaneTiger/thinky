@@ -23,48 +23,57 @@ export default {
     // document.body.addEventListener("contextmenu", (ev) => { ev.preventDefault(); });
 
     this.resizeViewport();
-
-    window.setTimeout (() => {
-      this.initClues();
-    }, 10);
-
+    this.initClues();
   },
 
   resizeViewport: function() {
-    const viewWidth = window.innerWidth,
-          viewHeight = window.innerHeight;
-    let scaleFactor;
-
-    scaleFactor = viewHeight / 1080;
-
+    let scaleFactor = window.innerHeight / 1080;
     viewport.style.transform = 'scale3d('+scaleFactor+','+scaleFactor+','+1+')';
   },
 
   initClues: function() {
     const allClues = Props.getAllClues();
     let left = 1480, top = 140;
-    document.getElementById('viewport').innerHTML += '<div></div>';
-    /*
     for (var clue in allClues) {
-      viewport.innerHTML += '<div></div>';
-      //'<div class="clue-snippet font--typewriter is--hidden" data-clue-snippet="' + clue + '" style="left: ' + (top > 1000 ? left + 30 : left) + 'px; top: ' + (top > 1000 ? top - 870 : top) + 'px;">' +
-      //                                          '<p>' + allClues[clue] + '</p></div>';
+      viewport.insertAdjacentHTML(
+        'beforeend',
+        '<div class="clue-snippet font--typewriter is--hidden" data-clue-snippet="' + clue + '" style="left: ' + (top > 1000 ? left + 30 : left) + 'px; top: ' + (top > 1000 ? top - 870 : top) + 'px;">' +
+        '<p>' + allClues[clue] + '</p></div>'
+      );
       left += 50;
       top += 60;
       if (left > 1600) {
         left = 1480;
       }
-    }*/
+    }
   },
 
-  extractClue: function(target) {
+  extractClue: function(ev) {
+    const target = ev.target;
     if (target && target.dataset.clue && !target.classList.contains('extracted')) {
       const clue = target.dataset.clue;
+      const cluePosition = target.getBoundingClientRect();
       const constClueSnippet = viewport.querySelector('.clue-snippet[data-clue-snippet="'+clue+'"]');
       if (constClueSnippet) {
-        Audio.sfx('pick-up');
+        Audio.sfx('click');
         target.classList.add('extracted');
         constClueSnippet.classList.remove('is--hidden');
+        constClueSnippet.classList.add('new');
+
+        const snippetLeft = constClueSnippet.style.left,
+              snippetTop = constClueSnippet.style.top,
+              startLeft = cluePosition.x,
+              startTop = cluePosition.y - 50;
+
+        constClueSnippet.style.left = startLeft + 'px';
+        constClueSnippet.style.top = startTop + 'px';
+
+        window.setTimeout (() => {
+          Audio.sfx('pick-up', 0, 0.1);
+          constClueSnippet.style.left = snippetLeft;
+          constClueSnippet.style.top = snippetTop;            
+        }, 800);
+        
       }      
     }
   },

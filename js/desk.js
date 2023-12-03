@@ -5,6 +5,7 @@ import Persons from './persons.js'
 import Places from './places.js'
 
 const deskContainer = document.getElementById('desk');
+const letterPoliceContainer = document.getElementById('letter-police');
 
 export default {
   
@@ -21,7 +22,7 @@ export default {
       ev.preventDefault();
       Audio.sfx('shuffle-paper');
       this.updateDetectiveName();
-      document.getElementById('letter-police').classList.remove('out');
+      letterPoliceContainer.classList.remove('out');
       document.getElementById('letter').classList.add('aside');
     }
   },
@@ -40,14 +41,14 @@ export default {
     if (detectiveName) {
       Props.setGameProp('detectiveName', detectiveName);
     }
-    document.getElementById('letter-police').querySelector('*[data-name="detective"]').textContent = Props.getGameProp('detectiveName');
+    letterPoliceContainer.querySelector('*[data-name="detective"]').textContent = Props.getGameProp('detectiveName');
   },
 
   handlePointerDown: function(ev) {
     var target = ev.target;
     if (target && target.classList.contains('clue') && target.closest('.desk--item')) {
       ev.preventDefault();
-      Ui.extractClue(target);
+      Ui.extractClue(ev);
     }
   },
 
