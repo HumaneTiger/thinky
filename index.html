@@ -49,33 +49,30 @@
         <div id="desk">
           <div id="letter" class="desk--item">
             <img src="./img/desk/letter-intro.png" class="bgimg">
+            <input type="text" id="detective-name" placeholder="Starling" class="font--typewriter" maxlength="10">
             <div class="button button--white button--noshadow button--smaller" id="button-letter-open">Open</div>
           </div>
-          <div id="letter-police" class="desk--item "> <!--out-->-->
+          <div id="letter-police" class="desk--item out">
             <img src="./img/desk/letter-temp.png" class="bgimg">
             <div class="content spacing--big font--typewriter">
               <p>
-                THE CASE:
+                Good morning, Detective <span class="name" data-name="detective">Starling</span>.
               </p>
               <p>
-                On a Saturday morning Parker Bailey arrives at his diner to prepare for the breakfast rush. He notices that <span class="clue" data-clue="bakery">across the street the Bakery</span> is still closed. The lights are off and no one has been there at all that morning as far as Parker can tell. This is strange. For as long as he can remember, <span class="clue" data-clue="nico-galanis">its owner Nico Galanis</span> has always been the first to open. He can’t remember the last time Nico’s lights weren’t on when he got to the Diner, at least not without Nico updating the shop owners’ group chat the night before.
+                I'm sorry to disturb you at this time. We all heard about your broken leg down at the precinct, and we hope you get well soon. Unfortunately, as I'm sure you've heard, for the first time in twenty years we've had a murder in Greendale Village. 
               </p>
               <p>
-                Parker crosses the street and tries to look inside the shop. The sign is still flipped to closed and it’s completely dark inside. He leans against the door, only to have it swing open. Parker steps inside, and is met with broken glass all over the floor.
+                On Saturday morning a restaurant owner from Lovich Street came barging into the police station. He claims that, on his way to open his diner, he noticed that the <span class="clue" data-clue="bakery">bakery across the street</span> still had its lights off and its sign flipped to closed.
+                He found this unusual, as its owner, <span class="clue" data-clue="nico-galanis">Nico Galanis</span>, is almost always the first to open shop. Upon crossing the street to check up on Mr. Galanis, the witness found door to the shop was open, and the front window broken. While his speech deteriorated into gibberish from this point forward, it was clear he found the place trashed. Display cases shattered, chairs and tables overturned, emptied cash register, the works. He also saw blood near the back room, where, upon further investigation, we found Mr. Galanis's body.
               </p>
               <p>
-                The bakery has been thoroughly trashed. The display cases are all shattered, tables and chairs are overturned and broken and plants and decor have been thrown. The cash register is open and empty and the chalk board has been torn off of the wall, yesterday’s specials still written in Nico’s crisp handwriting. There’s a trail of blood leading to the back room.
+                If it's not too much trouble, we could very much use your help. That big-city expertise of yours will be vital towards bringing this killer to justice! If you can't go out yourself, maybe send out some assistants of yours? I'd very much like to work with lovely Ms. Patterson again.
               </p>
               <p>
-                Parker backs out of the shop and calls the police. The store is taped off, and the investigation begins.
+                Again, hope you feel better,<br>
+                Constable Bill Braddox
               </p>
             </div>
-          </div>
-          <div class="clue-snippet font--typewriter new" data-clue-snippet="bakery">
-            <p>The Bakery is across the street of the Diner</p>
-          </div>
-          <div class="clue-snippet font--typewriter new" data-clue-snippet="nico-galanis">
-            <p>Nico Galanis was the Bakery owner</p>
           </div>
         </div>
         <div id="persons" class="out--right">
@@ -96,6 +93,7 @@
       <audio class="sfx-swoosh" src="./audio/fx/swoosh.mp3" preload></audio>
       <audio class="sfx-click" src="./audio/fx/click.wav" preload></audio>
       <audio class="sfx-pick-up" src="./audio/fx/pick-up.mp3" preload></audio>
+      <audio class="sfx-typewriter-hit" src="./audio/fx/typewriter-hit.wav" preload></audio>
     </div>
     <script src="js/init.js" type="module"></script>    
   </body>

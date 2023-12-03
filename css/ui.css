@@ -100,7 +100,7 @@
 }
 
 .spacing--big {
-  padding: 96px;
+  padding: 72px 96px;
 }
 
 .font--typewriter {
@@ -110,8 +110,7 @@
 .clue {
   cursor: grab;
 }
-.clue.extracted,
-.clue:hover {
+.clue.extracted {
   background-image: url(../img/desk/underline.png);
   background-size: 100% 4px;
   background-position: center bottom;

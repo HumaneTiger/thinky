@@ -24,6 +24,10 @@ export default {
 
     this.resizeViewport();
 
+    window.setTimeout (() => {
+      this.initClues();
+    }, 10);
+
   },
 
   resizeViewport: function() {
@@ -34,6 +38,35 @@ export default {
     scaleFactor = viewHeight / 1080;
 
     viewport.style.transform = 'scale3d('+scaleFactor+','+scaleFactor+','+1+')';
+  },
+
+  initClues: function() {
+    const allClues = Props.getAllClues();
+    let left = 1480, top = 140;
+    document.getElementById('viewport').innerHTML += '<div></div>';
+    /*
+    for (var clue in allClues) {
+      viewport.innerHTML += '<div></div>';
+      //'<div class="clue-snippet font--typewriter is--hidden" data-clue-snippet="' + clue + '" style="left: ' + (top > 1000 ? left + 30 : left) + 'px; top: ' + (top > 1000 ? top - 870 : top) + 'px;">' +
+      //                                          '<p>' + allClues[clue] + '</p></div>';
+      left += 50;
+      top += 60;
+      if (left > 1600) {
+        left = 1480;
+      }
+    }*/
+  },
+
+  extractClue: function(target) {
+    if (target && target.dataset.clue && !target.classList.contains('extracted')) {
+      const clue = target.dataset.clue;
+      const constClueSnippet = viewport.querySelector('.clue-snippet[data-clue-snippet="'+clue+'"]');
+      if (constClueSnippet) {
+        Audio.sfx('pick-up');
+        target.classList.add('extracted');
+        constClueSnippet.classList.remove('is--hidden');
+      }      
+    }
   },
 
   handleClick: function(ev) {

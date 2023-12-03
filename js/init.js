@@ -27,5 +27,7 @@ let preloadList = [
   Places.init();
   Assistants.init();
   EndDay.init();
+
   preloadImages();
+
 }
