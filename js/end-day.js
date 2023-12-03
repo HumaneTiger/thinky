@@ -24,6 +24,10 @@ export default {
     Props.setGameProp('day', nextDay);
     dayContainer.textContent = nextDay;
     endDayContainer.querySelector('.day').textContent = nextDay;
+    if (nextDay === 2) {
+      document.getElementById('letter').classList.add('is--hidden');
+      document.getElementById('photo-seccam').classList.remove('is--hidden');
+    }
   }
 
 }

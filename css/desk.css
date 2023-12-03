@@ -32,7 +32,8 @@
 }
 
 .desk--item:hover {
-  transform: scale(1.05) translateY(-5px);
+  transform: scale(1.05) translateY(-5px) !important;
+  z-index: 3;
 }
 
 .desk--item:hover .bgimg {
@@ -95,4 +96,21 @@
 
 #letter:hover .button {
   opacity: 1;
+}
+
+#photo-seccam {
+  position: absolute;
+  left: 100px;
+  top: 450px;
+  width: 900px;
+  height: 522px;
+  transform: rotate(5deg);
+}
+
+#photo-seccam .clue {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 29px;
+  width: 174px;
 }
