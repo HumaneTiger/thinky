@@ -22,6 +22,39 @@
   text-align: center;
 }
 
-#persons img {
-  transform: scale(1.1);
+#matt {
+  top: 350px;
+  left: 800px;
+  transform: rotate(5deg);
+}
+
+.profile--photo {
+  position: absolute;
+  width: 250px;
+  height: 256px;
+}
+
+.profile--photo .label {
+  position: absolute;
+  bottom: -20px;
+  left: 32px;
+  width: 170px;
+  height: 44px;
+  background-image: url(../img/persons/label.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: rotate(-5deg);
+  font-family: Handlee;
+  font-size: 24px;
+  text-align: center;
+  line-height: 1.8em;
+  color: #0f3c54;
+}
+
+.note--victim {
+  position: absolute;
+  bottom: -38px;
+  left: 174px;
+  width: 170px;
+  transform: rotate(-85deg);
 }

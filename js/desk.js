@@ -19,7 +19,7 @@ export default {
 
   handleClick: function(ev) {
     var target = ev.target;
-    if (target && target.classList.contains('button') && target.closest('.desk--item')) {
+    if (target && target.classList.contains('button') && target.closest('.physical--item')) {
       ev.preventDefault();
       Audio.sfx('shuffle-paper');
       this.updateDetectiveName();
@@ -47,7 +47,7 @@ export default {
 
   handlePointerDown: function(ev) {
     var target = ev.target;
-    if (target && target.classList.contains('clue') && target.closest('.desk--item')) {
+    if (target && target.classList.contains('clue') && target.closest('.physical--item')) {
       ev.preventDefault();
       ClueSnippets.extractClue(ev);
     }

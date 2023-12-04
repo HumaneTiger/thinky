@@ -12,7 +12,6 @@ const viewport = document.querySelector('#viewport main');
 let newPosX = 0, newPosY = 0, startPosX = 0, startPosY = 0, initialStyleLeft = 0, initialStyleTop = 0;
 let dragMode = false;
 let dragEl = null;
-let topIndex = 1;
 
 export default {
   
@@ -31,7 +30,7 @@ export default {
     for (var clue in allClues) {
       viewport.insertAdjacentHTML(
         'beforeend',
-        '<div class="clue-snippet font--typewriter" data-clue-snippet="' + clue + '" style="left: ' + (top > 1000 ? left + 30 : left) + 'px; top: ' + (top > 1000 ? top - 870 : top) + 'px;">' +
+        '<div class="clue-snippet font--typewriter is--hidden" data-clue-snippet="' + clue + '" style="left: ' + (top > 1000 ? left + 30 : left) + 'px; top: ' + (top > 1000 ? top - 870 : top) + 'px;">' +
         '<p>' + allClues[clue] + '</p></div>'
       );
       left += 50;
@@ -79,78 +78,61 @@ export default {
 
     if (target && leftMouseButton) {
 
-      if (dragMode === false && target.closest('div.battle-card')) {
+      if (dragMode === false && target.closest('.clue-snippet')) {
 
         dragMode = true;
 
-        dragEl = target.closest('div.battle-card');
+        dragEl = target.closest('.clue-snippet');
 
-        dragEl.style.zIndex = topIndex++;
         dragEl.classList.add('grabbed');
         
-        startPosX = dragEl.clientX;
-        startPosY = dragEl.clientY;
+        startPosX = ev.clientX;
+        startPosY = ev.clientY;
 
         initialStyleLeft = dragEl.style.left;
         initialStyleTop = dragEl.style.top;
-      }
-
-      if (dragMode === false && target.closest('#almanac') && target.classList.contains('title')) {
-
-        dragMode = true;
-
-        dragEl = target.closest('#almanac');
-        dragEl.classList.add('grabbed');
         
-        startPosX = dragEl.clientX;
-        startPosY = dragEl.clientY;
-
-        initialStyleLeft = dragEl.style.left;
-        initialStyleTop = dragEl.style.top;
       }
     }
   },
 
-  mouseMove: function(e) {
+  mouseMove: function(ev) {
 
-    e.preventDefault;
-    e.stopPropagation();
+    ev.preventDefault;
+    ev.stopPropagation();
     
     if (dragMode) {
 
-      let scale = window.innerHeight / 1200;
+      let scale = window.innerHeight / 1080;
       // calculate the new position
-      newPosX = (startPosX - e.clientX) / scale;
-      newPosY = (startPosY - e.clientY) / scale;
+      newPosX = (startPosX - ev.clientX) / scale;
+      newPosY = (startPosY - ev.clientY) / scale;
 
       // with each move we also want to update the start X and Y
-      startPosX = e.clientX;
-      startPosY = e.clientY;
+      startPosX = ev.clientX;
+      startPosY = ev.clientY;
 
       if (dragEl) {
         // set the element's new position:
         dragEl.style.top = (dragEl.offsetTop - newPosY) + "px";
         dragEl.style.left = (dragEl.offsetLeft - newPosX) + "px";  
-        let dragTarget = this.getDragTarget(e);
+        let dragTarget = this.getDragTarget(ev);
         if (dragTarget) {
-          dragTarget.classList.add('active');
+          dragEl.classList.add('active');
+          dragTarget.classList.remove('no--hover');
+          dragTarget.classList.add('force--hover');
+        } else {
+          dragEl.classList.remove('active');
         }
-        // remove item info when card is dragged
-        battleCardsContainer.querySelector('p.item-info').innerHTML = '';
       }
     }  
   },
 
-  mouseUp: function(e) {
+  mouseUp: function(ev) {
     if (dragMode) {
-      let dragTarget = this.getDragTarget(e);
+      let dragTarget = this.getDragTarget(ev);
       if (dragTarget) {
-        if (dragTarget.classList.contains('zombie') && !dragEl.classList.contains('resolve')) {
-          Battle.resolveAttack(dragEl, dragTarget);
-        }
-      } else if (dragEl.id && dragEl.id === 'almanac') {
-        dragEl.classList.remove('grabbed');
-        dragEl.classList.add('repos');
+        // lock snippet
       } else {
         this.resetDraggedElement(dragEl);
       }
@@ -162,7 +144,35 @@ export default {
   resetDraggedElement: function(el) {
     el.style.left = initialStyleLeft;
     el.style.top = initialStyleTop;
-    el.classList.remove('grabbed');
+    el.classList.remove('grabbed', 'active');
+  },
+
+  getDragTarget: function(ev) {
+
+    let targetCandidateFound;
+    let mouseX = ev.clientX;
+    let mouseY = ev.clientY;
+
+    let targetCards = document.querySelectorAll('.drag-target.unknown');
+
+    targetCards.forEach(candidate => {
+
+      let viewportOffset = candidate.getBoundingClientRect();
+      candidate.classList.add('no--hover');
+      candidate.classList.remove('force--hover');
+
+      if (mouseX >= viewportOffset.left &&
+          mouseX <= viewportOffset.right &&
+          mouseY >= viewportOffset.top &&
+          mouseY <= viewportOffset.bottom) {
+          
+          targetCandidateFound = candidate;
+      }
+
+    });
+
+    return targetCandidateFound;
+
   }
 
 }

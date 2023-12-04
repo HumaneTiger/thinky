@@ -47,3 +47,12 @@
   left: 1600px;
   top: 500px;
 }
+
+.clue-snippet.grabbed {
+  transition: none;
+  z-index: 22;
+}
+
+.clue-snippet.active {
+  filter: drop-shadow(0 0 10px rgb(200, 200, 255));
+}

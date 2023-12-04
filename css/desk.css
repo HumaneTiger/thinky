@@ -17,11 +17,11 @@
   transform: translateX(1920px);
 }
 
-.desk--item {
+.physical--item {
   transition: transform 0.2s ease-out;
 }
 
-.desk--item .bgimg {
+.physical--item .bgimg {
   position: absolute;
   top: 0;
   left: 0;
@@ -31,13 +31,15 @@
   transition: filter 0.2s ease-out;
 }
 
-.desk--item:not(.no--hover):hover {
+.physical--item:not(.no--hover):hover,
+.physical--item.force--hover {
   transform: scale(1.05) translateY(-5px) !important;
   z-index: 3;
 }
 
-.desk--item:not(.no--hover):hover .bgimg {
-  filter: drop-shadow(0 3px 6px rgb(97, 82, 75));
+.physical--item:not(.no--hover):hover .bgimg,
+.physical--item.force--hover .bgimg {
+    filter: drop-shadow(0 3px 6px rgb(97, 82, 75));
 }
 
 #letter {
