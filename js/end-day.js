@@ -14,8 +14,14 @@ export default {
     endDayContainer.classList.add('out');
   },
 
+  // this is the "end day" mode
   show: function() {
     endDayContainer.classList.remove('out');
+    const allSnippets = document.querySelectorAll('#viewport main .clue-snippet');    
+    [...allSnippets].forEach((snippet) => {
+      snippet.classList.remove('new');
+      snippet.classList.add('out');
+    });
   },
 
   nextDay: function() {
@@ -28,6 +34,10 @@ export default {
       document.getElementById('letter').classList.add('is--hidden');
       document.getElementById('photo-seccam').classList.remove('is--hidden');
     }
+    document.getElementById('letter').classList.add('is--hidden');
+    const allSnippets = document.querySelectorAll('#viewport main .clue-snippet');    
+    [...allSnippets].forEach((snippet) => {
+      snippet.classList.remove('out');
+    });
   }
-
 }

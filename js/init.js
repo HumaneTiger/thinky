@@ -1,5 +1,6 @@
 import Props from './props.js'
 import Ui from './ui.js'
+import ClueSnippets from './clue-snippets.js'
 import Desk from './desk.js'
 import Persons from './persons.js'
 import Places from './places.js'
@@ -22,6 +23,7 @@ let preloadList = [
   
   Props.init();
   Ui.init();
+  ClueSnippets.init();
   Desk.init();
   Persons.init();
   Places.init();

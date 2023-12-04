@@ -1,6 +1,7 @@
 import Audio from './audio.js'
 import Props from './props.js'
 import Ui from './ui.js'
+import ClueSnippets from './clue-snippets.js'
 import Persons from './persons.js'
 import Places from './places.js'
 
@@ -23,7 +24,7 @@ export default {
       Audio.sfx('shuffle-paper');
       this.updateDetectiveName();
       letterPoliceContainer.classList.remove('out');
-      document.getElementById('letter').classList.add('aside');
+      document.getElementById('letter').classList.add('aside', 'no--hover');
     }
   },
 
@@ -48,7 +49,7 @@ export default {
     var target = ev.target;
     if (target && target.classList.contains('clue') && target.closest('.desk--item')) {
       ev.preventDefault();
-      Ui.extractClue(ev);
+      ClueSnippets.extractClue(ev);
     }
   },
 
