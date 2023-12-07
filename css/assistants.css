@@ -11,9 +11,75 @@
   transform: translateX(-400px);
 }
 
-#assistants img {
+.assistant--chip {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%) scale(1.15);
+  width: 140px;
+  height: 140px;
+  cursor: grab;
 }
 
+.assistant--chip img {
+  pointer-events: none;
+}
+
+.assistant--chip .label {
+  width: 132px;
+  font-size: 20px;
+  bottom: -24px;
+  left: 10px;
+}
+
+.assistant--chip .speech-bubble {
+  background-image: url(../img/assistants/speech-bubble.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 113px;
+  bottom: 50px;
+  width: 186px;
+  height: 144px;
+  color: rgb(97, 82, 75);
+  padding: 20px 24px;
+  font-size: 16px;
+  font-family: 'Lora';
+  font-weight: bold;
+  filter: drop-shadow(0 2px 4px rgba(97, 82, 75, 0.5));
+}
+
+.assistant--chip.grabbed {
+  transition: none;
+  z-index: 22;
+}
+
+.assistant--chip.active {
+  filter: drop-shadow(0 0 10px rgb(200, 200, 255));
+}
+
+#eleanor {
+  top: 200px;
+  left: 0;
+}
+
+#frederice {
+  top: 370px;
+  left: 0;
+}
+#frederice .label {
+  transform: rotate(2deg);
+}
+
+#maja {
+  top: 540px;
+  left: 0;
+}
+#maja .label {
+  transform: rotate(-3deg);
+}
+
+#lina {
+  top: 710px;
+  left: 0;
+}
+#lina .label {
+  transform: rotate(1deg);
+}
