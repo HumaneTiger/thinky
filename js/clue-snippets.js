@@ -8,6 +8,8 @@ import EndDay from './end-day.js'
 import Assistants from './assistants.js'
 
 const viewport = document.querySelector('#viewport main');
+const cluePositiveFeedbackElem = document.querySelector('#viewport .clue-positive-feedback');
+let originalPosition = [];
 
 let newPosX = 0, newPosY = 0, startPosX = 0, startPosY = 0, initialStyleLeft = 0, initialStyleTop = 0;
 let dragMode = false;
@@ -26,11 +28,16 @@ export default {
 
   initClues: function() {
     const allClues = Props.getAllClues();
+    const allSolutions = Props.getAllSolutions();
     let left = 1480, top = 140;
     for (var clue in allClues) {
+      originalPosition[clue] = {
+        left: (top > 1000 ? left + 30 : left),
+        top: (top > 1000 ? top - 870 : top)
+      }
       viewport.insertAdjacentHTML(
         'beforeend',
-        '<div class="clue-snippet font--typewriter is--hidden" data-clue-snippet="' + clue + '" style="left: ' + (top > 1000 ? left + 30 : left) + 'px; top: ' + (top > 1000 ? top - 870 : top) + 'px;">' +
+        '<div class="clue-snippet font--typewriter is--hidden" data-clue-snippet="' + clue + '" style="left: ' + originalPosition[clue].left + 'px; top: ' + originalPosition[clue].top + 'px;">' +
         '<p>' + allClues[clue] + '</p></div>'
       );
       left += 50;
@@ -38,6 +45,16 @@ export default {
       if (left > 1600) {
         left = 1480;
       }
+    }
+    for (var solution in allSolutions) {
+      const solutionsForTarget = allSolutions[solution];
+      this.updateUnknowns(document.getElementById(solution), solutionsForTarget.length);
+    }
+  },
+
+  cheat: function() {
+    for (var clue in Props.getAllClues()) {
+      viewport.querySelector('*[data-clue-snippet="' + clue + '"]').classList.remove('is--hidden');
     }
   },
 
@@ -131,14 +148,79 @@ export default {
   mouseUp: function(ev) {
     if (dragMode) {
       let dragTarget = this.getDragTarget(ev);
+      dragEl.classList.remove('grabbed');
       if (dragTarget) {
-        // lock snippet
+        dragTarget.classList.add('no--hover');
+        dragTarget.classList.remove('force--hover');
+        this.processClue(dragEl, dragTarget);
       } else {
         this.resetDraggedElement(dragEl);
       }
       dragMode = false;
       dragEl = null;
     }
+  },
+
+  processClue: function(clue, target) {
+    const solutions = Props.getAllSolutions();
+    const targetId = target.id,
+          clueId = clue.dataset.clueSnippet;
+    if (targetId && clueId) {
+      const solutionsForTarget = solutions[targetId];
+      if (solutionsForTarget.length && solutionsForTarget.includes(clueId)) {
+        const index = solutionsForTarget.indexOf(clueId);
+        solutionsForTarget.splice(index, 1);
+        if (solutionsForTarget.length === 0) {
+          this.positiveFeedback(clue);
+          this.revealTarget(target, targetId, clue);
+        } else {
+          this.positiveFeedback(clue);
+          Audio.sfx('success');
+          this.updateUnknowns(target, solutionsForTarget.length);
+        }
+      } else {
+        this.wrongClue(clueId);
+      }
+    }
+  },
+
+  positiveFeedback: function(clue) {
+    cluePositiveFeedbackElem.style.left = parseInt(clue.style.left, 10) + 145 + 'px';
+    cluePositiveFeedbackElem.style.top = clue.style.top;
+    cluePositiveFeedbackElem.style.opacity = 0;
+    cluePositiveFeedbackElem.style.transform = 'scale(10)';
+    clue.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
+    clue.style.transform = 'scale(3)';
+    clue.style.opacity = 0;
+    window.setTimeout(() => {
+      cluePositiveFeedbackElem.style.removeProperty('left');
+      cluePositiveFeedbackElem.style.removeProperty('top');
+      cluePositiveFeedbackElem.style.removeProperty('opacity');
+      cluePositiveFeedbackElem.style.removeProperty('transform');
+      clue.classList.add('is--hidden');
+    }, 500);
+  },
+
+  updateUnknowns: function(target, unknownClues) {
+    target.querySelector('.label').textContent = 'Unknown (' + unknownClues + ')';
+  },
+
+  revealTarget: function(target, label, clue) {
+    Audio.sfx('reveal');
+    target.querySelector('.bgimg').src = target.querySelector('.bgimg').src.replace('-unknown', '-known');
+    target.classList.remove('unknown');
+    if (Props.mapName(label)) {
+      target.querySelector('.label').textContent = Props.mapName(label);
+    } else {
+      target.querySelector('.label').textContent = label.replace('-', ' ');
+    }
+  },
+
+  wrongClue: function(clueId) {
+    Audio.sfx('wrong');
+    dragEl.classList.remove('active');
+    dragEl.style.left = originalPosition[clueId].left + 'px';
+    dragEl.style.top = originalPosition[clueId].top + 'px';
   },
 
   resetDraggedElement: function(el) {
@@ -158,15 +240,17 @@ export default {
     targetCards.forEach(candidate => {
 
       let viewportOffset = candidate.getBoundingClientRect();
-      candidate.classList.add('no--hover');
-      candidate.classList.remove('force--hover');
 
       if (mouseX >= viewportOffset.left &&
           mouseX <= viewportOffset.right &&
           mouseY >= viewportOffset.top &&
           mouseY <= viewportOffset.bottom) {
-          
+
           targetCandidateFound = candidate;
+
+      } else {
+        candidate.classList.add('no--hover');
+        candidate.classList.remove('force--hover');
       }
 
     });

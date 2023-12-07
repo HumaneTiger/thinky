@@ -22,28 +22,69 @@
   text-align: center;
 }
 
-#matt {
-  top: 350px;
-  left: 800px;
+#nico-galanis {
+  top: 409px;
+  left: 765px;
   transform: rotate(5deg);
+}
+
+#parker-bailey {
+  top: 158px;
+  left: 433px;
+  transform: rotate(-18deg);
+}
+
+#matt-bishop {
+  top: 120px;
+  left: 1397px;
+  transform: rotate(20deg);
+}
+
+#emmett-moss {
+  left: 1000px;
+  top: 720px;
+  transform: rotate(-10deg);
+}
+
+#donna-fischer {
+  left: 1235px;
+  top: 420px;
+  transform: rotate(-3deg);
+}
+
+#ophelia-easton {
+  left: 918px;
+  top: 84px;
+  transform: rotate(4deg);
+}
+
+#delaney-cane {
+  left: 1388px;
+  top: 720px;
+  transform: rotate(2deg);
+}
+
+#willow-bryce {
+  left: 439px;
+  top: 720px;
+  transform: rotate(13deg);
 }
 
 .profile--photo {
   position: absolute;
-  width: 250px;
-  height: 256px;
+  width: 233px;
+  height: 235px;
 }
 
-.profile--photo .label {
+.label {
   position: absolute;
-  bottom: -20px;
-  left: 32px;
   width: 170px;
   height: 44px;
   background-image: url(../img/persons/label.png);
   background-repeat: no-repeat;
   background-size: contain;
   transform: rotate(-5deg);
+  text-transform: capitalize;
   font-family: Handlee;
   font-size: 24px;
   text-align: center;
@@ -51,10 +92,15 @@
   color: #0f3c54;
 }
 
+.profile--photo .label {
+  bottom: -20px;
+  left: 32px;
+}
+
 .note--victim {
   position: absolute;
-  bottom: -38px;
-  left: 174px;
-  width: 170px;
+  bottom: -30px;
+  left: 177px;
+  width: 123px;
   transform: rotate(-85deg);
 }

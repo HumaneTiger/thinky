@@ -4,6 +4,7 @@ import Props from './props.js'
 import Desk from './desk.js'
 import Persons from './persons.js'
 import Places from './places.js'
+import ClueSnippets from './clue-snippets.js'
 import EndDay from './end-day.js'
 import Assistants from './assistants.js'
 
@@ -18,6 +19,7 @@ export default {
 
     window.addEventListener('resize', this.resizeViewport);
     document.body.addEventListener('click', this.handleClick.bind(this));
+    document.body.addEventListener('keypress', this.handleKey.bind(this));
 
     // document.body.addEventListener("contextmenu", (ev) => { ev.preventDefault(); });
 
@@ -37,6 +39,12 @@ export default {
       if (target.id === 'button-places') this.switchToPlaces();
       if (target.id === 'button-end-day') this.endDay();
       if (target.id === 'button-lets-go') this.nextDay();
+    }
+  },
+
+  handleKey: function(ev) {
+    if (ev.key === '#') {
+      ClueSnippets.cheat();
     }
   },
 

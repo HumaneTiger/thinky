@@ -21,8 +21,88 @@
   padding: 150px 100px 150px 500px;
 }
 
-#places img {
+#map {
   filter: drop-shadow(0 3px 6px rgb(64, 54, 50));
   width: 1048px;
   transform: rotate(-15deg);
+}
+
+.place--marker {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+#morning-cafe {
+  top: 409px;
+  left: 765px;
+  transform: rotate(5deg);
+}
+
+#bailey-diner {
+  top: 446px;
+  left: 907px;
+  transform: rotate(-3deg);
+}
+
+#knight-antiques {
+  top: 287px;
+  left: 1169px;
+  transform: rotate(15deg);
+}
+
+#sprout {
+  top: 700px;
+  left: 1080px;
+  transform: rotate(-1deg);
+}
+
+#zink-jewelers {
+  top: 721px;
+  left: 707px;
+  transform: rotate(8deg);
+}
+
+#readwell-books {
+  top: 504px;
+  left: 1061px;
+  transform: rotate(-1deg);
+}
+
+#audio-forge {
+  top: 527px;
+  left: 1265px;
+  transform: rotate(5deg);
+}
+
+#places .label {
+  left: -35px;
+  top: -16px;
+  font-size: 19px;
+  line-height: 2.4em;
+}
+
+.place--marker::after {
+  opacity: 0.9;
+  font-family: Handlee;
+  color: #FAF9ED;
+  font-weight: bold;
+  font-size: 50px;
+  position: absolute;
+  left: 40px;
+  top: 24px;
+}
+.place--marker.unknown::after {
+  content: '?';
+}
+.place--marker:not(.unknown) {
+  filter: hue-rotate(167deg);
+}
+.place--marker:not(.unknown) .label {
+  filter: hue-rotate(-167deg);
+}
+.place--marker:not(.unknown)::after {
+  content: '⌂';
+  left: 35px;
+  top: 17px;
 }

@@ -56,3 +56,16 @@
 .clue-snippet.active {
   filter: drop-shadow(0 0 10px rgb(200, 200, 255));
 }
+
+.clue-positive-feedback {
+  position: absolute;
+  left: -50vw;
+  opacity: 1;
+  color: #A5B896;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  font-family: Handlee;
+  font-size: 48px;
+  font-weight: bold;
+  z-index: 24;
+  transition: transform 0.5s ease-in, opacity 0.5s ease-in;
+}
