@@ -96,11 +96,16 @@ export default {
     dragEl.querySelector('.speech-bubble--person').classList.add('is--hidden');
     dragEl.querySelector('.speech-bubble--place').classList.add('is--hidden');
     dragEl.querySelector('.speech-bubble--victim').classList.add('is--hidden');
+    dragEl.dataset.interrogation = dragTarget.id;
+    dragEl.dataset.type = Props.getGameProp('mode');
     if (Props.getGameProp('mode') === 'persons') {
       if (dragTarget.id === 'nico-galanis') {
         dragEl.querySelector('.speech-bubble--victim').classList.remove('is--hidden');
       } else {
-        dragEl.querySelector('span').textContent = Props.mapName(dragTarget.id);
+        let allNameSlots = dragEl.querySelectorAll('span.name');
+        [...allNameSlots].forEach(slot => {
+          slot.textContent = Props.mapName(dragTarget.id);
+        });
         dragEl.querySelector('.speech-bubble--person').classList.remove('is--hidden');
       }
     } else if (Props.getGameProp('mode') === 'places') {

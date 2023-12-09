@@ -2,6 +2,7 @@ import Desk from './desk.js'
 import Places from './places.js'
 
 const personsContainer = document.getElementById('persons');
+const allProfilePhotos = personsContainer.querySelectorAll('.profile--photo');
 
 export default {
   
@@ -16,6 +17,12 @@ export default {
   show: function() {
     personsContainer.classList.remove('out--left');
     personsContainer.classList.remove('out--right');
+  },
+
+  unlockAll: function() {
+    [...allProfilePhotos].forEach(photo => {
+      photo.classList.remove('is--locked');
+    });
   }
 
 }

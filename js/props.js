@@ -117,6 +117,19 @@ export default {
 
   mapName: function(name) {
     return nameMappings[name];
-  }
+  },
+
+  getNewThing: function(thing) {
+    const keys = Reflect.ownKeys(interrogations[thing]);
+    if (keys.length) {
+      let interrogation = {
+        key: keys[0],
+        value: interrogations[thing][keys[0]],
+        type: interrogations[thing][keys[0]] === true ? 'item' : 'clue'
+      };
+      delete interrogations[thing][keys[0]];
+      return interrogation;
+    }
+  },
 
 }

@@ -20,9 +20,37 @@
 
 #button-lets-go {
   position: absolute;
-  bottom: 100px;
+  bottom: 80px;
   left: 50%;
   margin-left: -98px;
   font-size: 24px;
   line-height: 2.8em;
+  z-index: 20;
+}
+
+#interrogations {
+  position: absolute;
+  left: 56%;
+  width: 260px;
+  height: 100%;
+  padding-top: 110px;
+  transition: transform 0.2s ease-out;
+  transition-delay: 250ms;
+  z-index: 10;
+}
+
+#interrogations.out--right {
+  transform: translateX(100vw);
+}
+
+#interrogations .item-or-clue {
+  width: 260px;
+  height: 190px;
+}
+
+#interrogations .item-or-clue .bgimg {
+  left: 0;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
 }
