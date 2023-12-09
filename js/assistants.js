@@ -1,4 +1,4 @@
-import Desk from './desk.js'
+import Props from './props.js'
 import Persons from './persons.js'
 import Places from './places.js'
 
@@ -24,7 +24,7 @@ export default {
 
     if (target && leftMouseButton) {
 
-      if (dragMode === false && target.closest('.assistant--chip')) {
+      if (dragMode === false && target.closest('.assistant--chip:not(.is--locked)')) {
 
         dragMode = true;
 
@@ -48,7 +48,7 @@ export default {
     ev.stopPropagation();
 
     if (dragMode) {
-      console.log(dragMode);
+      
       let scale = window.innerHeight / 1080;
       // calculate the new position
       newPosX = (startPosX - ev.clientX) / scale;
@@ -63,7 +63,7 @@ export default {
         dragEl.style.top = (dragEl.offsetTop - newPosY) + "px";
         dragEl.style.left = (dragEl.offsetLeft - newPosX) + "px";  
         let dragTarget = this.getDragTarget(ev);
-        if (dragTarget) {
+        if (dragTarget && !dragTarget.classList.contains('is--locked')) {
           dragEl.classList.add('active');
           dragTarget.classList.remove('no--hover');
           dragTarget.classList.add('force--hover');
@@ -78,11 +78,12 @@ export default {
     if (dragMode) {
       let dragTarget = this.getDragTarget(ev);
       dragEl.classList.remove('grabbed');
-      if (dragTarget) {
-        dragTarget.classList.add('no--hover');
+      if (dragTarget && !dragTarget.classList.contains('is--locked')) {
+        dragTarget.classList.add('no--hover', 'is--locked');
         dragTarget.classList.remove('force--hover');
         this.taskAssistant(dragEl, dragTarget);
       } else {
+        dragEl.classList.remove('grabbed', 'active');
         this.resetDraggedElement(dragEl);
       }
       dragMode = false;
@@ -91,13 +92,26 @@ export default {
   },
 
   taskAssistant: function(dragEl, dragTarget) {
-    dragEl.querySelector('.speech-bubble').classList.remove('is--hidden');
+    dragEl.classList.add('no--hover', 'is--locked');
+    dragEl.querySelector('.speech-bubble--person').classList.add('is--hidden');
+    dragEl.querySelector('.speech-bubble--place').classList.add('is--hidden');
+    dragEl.querySelector('.speech-bubble--victim').classList.add('is--hidden');
+    if (Props.getGameProp('mode') === 'persons') {
+      if (dragTarget.id === 'nico-galanis') {
+        dragEl.querySelector('.speech-bubble--victim').classList.remove('is--hidden');
+      } else {
+        dragEl.querySelector('span').textContent = Props.mapName(dragTarget.id);
+        dragEl.querySelector('.speech-bubble--person').classList.remove('is--hidden');
+      }
+    } else if (Props.getGameProp('mode') === 'places') {
+      dragEl.querySelector('.speech-bubble--place').classList.remove('is--hidden');
+    }
   },
 
   resetDraggedElement: function(el) {
-    el.style.left = initialStyleLeft;
-    el.style.top = initialStyleTop;
-    el.classList.remove('grabbed', 'active');
+    if (el.style) {
+      el.removeAttribute('style');
+    }
   },
 
   getDragTarget: function(ev) {
@@ -135,6 +149,10 @@ export default {
   },
 
   show: function() {
+    let allAssistantChips = assistantsContainer.querySelectorAll('.assistant--chip');
+    [...allAssistantChips].forEach(chip => {
+      this.resetDraggedElement(chip);
+    });
     assistantsContainer.classList.remove('out--left');
   }
 

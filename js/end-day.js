@@ -22,6 +22,17 @@ export default {
       snippet.classList.remove('new');
       snippet.classList.add('out');
     });
+    let allAssistantChips = document.querySelectorAll('#assistants .assistant--chip');
+    [...allAssistantChips].forEach(chip => {
+      chip.classList.remove('active'); /* use for "no task" later */
+      chip.removeAttribute('style');
+      chip.classList.add('is--locked', 'no--hover');
+      chip.querySelector('.speech-bubble--person').classList.add('is--hidden');
+      chip.querySelector('.speech-bubble--place').classList.add('is--hidden');
+      chip.querySelector('.speech-bubble--victim').classList.add('is--hidden');
+    });
+    document.getElementById('assistants').classList.add('end-day');
+    document.getElementById('assistants').classList.remove('out--left');
   },
 
   nextDay: function() {
@@ -39,5 +50,13 @@ export default {
     [...allSnippets].forEach((snippet) => {
       snippet.classList.remove('out');
     });
+    const allAssistantChips = document.querySelectorAll('#assistants .assistant--chip');
+    [...allAssistantChips].forEach(chip => {
+      chip.classList.remove('is--locked', 'no--hover');
+    });
+    document.getElementById('assistants').classList.remove('end-day');
+    if (Props.getGameProp('mode') === 'desk') {
+      document.getElementById('assistants').classList.add('out--left');
+    }
   }
 }

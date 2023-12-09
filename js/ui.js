@@ -55,7 +55,8 @@ export default {
       Places.hide('right'); // immer rechts raus
       Assistants.hide();
       Desk.show();
-      currentPosition = 1;  
+      currentPosition = 1;
+      Props.setGameProp('mode', 'desk');
     }
   },
 
@@ -72,6 +73,7 @@ export default {
       Persons.show();
       Assistants.show();
       currentPosition = 2;
+      Props.setGameProp('mode', 'persons');
     }
   },
 
@@ -83,6 +85,7 @@ export default {
       Places.show();
       Assistants.show();
       currentPosition = 3;
+      Props.setGameProp('mode', 'places');
     }
   },
 

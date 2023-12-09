@@ -18,22 +18,28 @@ let dragEl = null;
 export default {
   
   init: function() {
-    
     document.body.addEventListener('pointerdown', this.mouseDown.bind(this));
     document.body.addEventListener('pointermove', this.mouseMove.bind(this));
     document.body.addEventListener('pointerup', this.mouseUp.bind(this));
-    
     this.initClues();
   },
 
   initClues: function() {
     const allClues = Props.getAllClues();
+    const allInterrogations = Props.getAllInterrogation();
     const allSolutions = Props.getAllSolutions();
     let left = 1480, top = 140;
+    for (var interrogation in allInterrogations) {
+      for (var clue in allInterrogations[interrogation]) {
+        if (allInterrogations[interrogation][clue] !== true) {
+          allClues[clue] = allInterrogations[interrogation][clue];
+        }
+      }
+    }
     for (var clue in allClues) {
       originalPosition[clue] = {
-        left: (top > 1000 ? left + 30 : left),
-        top: (top > 1000 ? top - 870 : top)
+        left: (top > 900 ? left + 30 : left),
+        top: (top > 900 ? top - 840 : top)
       }
       viewport.insertAdjacentHTML(
         'beforeend',
@@ -41,7 +47,7 @@ export default {
         '<p>' + allClues[clue] + '</p></div>'
       );
       left += 50;
-      top += 60;
+      top += 50;
       if (left > 1600) {
         left = 1480;
       }
@@ -83,8 +89,7 @@ export default {
           constClueSnippet.style.left = snippetLeft;
           constClueSnippet.style.top = snippetTop;            
         }, 800);
-        
-      }      
+      }
     }
   },
 
@@ -209,11 +214,7 @@ export default {
     Audio.sfx('reveal');
     target.querySelector('.bgimg').src = target.querySelector('.bgimg').src.replace('-unknown', '-known');
     target.classList.remove('unknown');
-    if (Props.mapName(label)) {
-      target.querySelector('.label').textContent = Props.mapName(label);
-    } else {
-      target.querySelector('.label').textContent = label.replace('-', ' ');
-    }
+    target.querySelector('.label').textContent = Props.mapName(label);
   },
 
   wrongClue: function(clueId) {
