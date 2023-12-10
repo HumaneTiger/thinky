@@ -81,7 +81,10 @@
   font-size: 19px;
   line-height: 2.4em;
 }
-
+#knight-antiques .label {
+  font-size: 17px;
+  line-height: 2.6em;
+}
 .place--marker::after {
   opacity: 0.9;
   font-family: Handlee;

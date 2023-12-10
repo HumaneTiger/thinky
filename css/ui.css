@@ -108,7 +108,7 @@
 }
 
 .clue:not(.extracted) {
-  cursor: grab;
+  cursor: url(../img/ui/hand-cursor.png), grab;
 }
 .clue.extracted {
   background-image: url(../img/desk/underline.png);

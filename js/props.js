@@ -12,6 +12,7 @@ var clues = {
   'table-chairs': 'A building with table and chairs outside',
   'friday-specials': 'The hand-written board menu offers "Friday Specials"',
   'clock-time': 'The clock says 9:13',
+  'knife-blade': 'It seems like this blade couldn\'t do the wound',
   /* bakery photo crime 2 */
   'bust-pavement': 'A bust and shattered glass are lying on the pavement',
   'shop-down-street': 'A shop "down at the end of street"',
@@ -20,7 +21,7 @@ var clues = {
   /* coop flyer */
   'coop-diner': 'Nico\'s Bakery has a coop with the Diner restaurant',
   /* antiques recipe */
-  'antiques-recipe': 'A recipe over "Movie Bust -- $149"',
+  'antiques-recipe': 'A recipe "Movie Bust -- $149" written on it',
   /* others, todo */
   //'secury-cam': 'Cloaked couple walks by the music store Friday at 22:46',
 }
@@ -57,7 +58,6 @@ var solutions = {
   'ophelia-easton': ['some-clue-1', 'some-clue-2', 'some-clue-3'],
   'delaney-cane': ['some-clue-1', 'some-clue-2', 'some-clue-3'],
   'willow-bryce': ['some-clue-1', 'some-clue-2', 'some-clue-3'],
-
   'morning-cafe': ['bakery-across-diner'],
   'bailey-diner': ['coop-diner', 'photo-diner'],
   'knight-antiques': ['some-clue-1', 'some-clue-2', 'some-clue-3'],
@@ -78,12 +78,12 @@ var nameMappings = {
   'willow-bryce': 'Willow Bryce',
 
   'morning-cafe': 'Καλημέρα Kafe',
-  'bailey-diner': 'Bailey Family Diner',
+  'bailey-diner': 'Family Diner',
   'knight-antiques': 'Red Knight Antiques',
   'sprout': 'Sprout!',
   'zinc-jewelers': 'ZINC Jewelers',
   'readwell-books': 'Readwell Books',
-  'audio-forge': "Willow's Audio Forge",
+  'audio-forge': "Audio Forge",
 }
 
 export default {

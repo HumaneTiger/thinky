@@ -24,6 +24,6 @@ export default {
     [...allPlaceMarkers].forEach(marker => {
       marker.classList.remove('is--locked');
     });
-  }
+  },
 
 }

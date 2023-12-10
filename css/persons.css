@@ -86,9 +86,9 @@
   transform: rotate(-5deg);
   text-transform: capitalize;
   font-family: Handlee;
-  font-size: 24px;
+  font-size: 22px;
   text-align: center;
-  line-height: 1.8em;
+  line-height: 2em;
   color: #0f3c54;
 }
 
@@ -99,7 +99,7 @@
 
 .note--victim {
   position: absolute;
-  bottom: -30px;
+  bottom: -3px;
   left: 177px;
   width: 123px;
   transform: rotate(-85deg);

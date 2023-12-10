@@ -54,7 +54,7 @@ export default {
     }
     for (var solution in allSolutions) {
       const solutionsForTarget = allSolutions[solution];
-      this.updateUnknowns(document.getElementById(solution), solutionsForTarget.length);
+      Persons.updatePersonsPlacesUnknowns(document.getElementById(solution), solutionsForTarget.length);
     }
   },
 
@@ -177,11 +177,11 @@ export default {
         solutionsForTarget.splice(index, 1);
         if (solutionsForTarget.length === 0) {
           this.positiveFeedback(clue);
-          this.revealTarget(target, targetId, clue);
+          Persons.revealPersonsPlacesTarget(target, targetId);
         } else {
           this.positiveFeedback(clue);
           Audio.sfx('success');
-          this.updateUnknowns(target, solutionsForTarget.length);
+          Persons.updatePersonsPlacesUnknowns(target, solutionsForTarget.length);
         }
       } else {
         this.wrongClue(clueId);
@@ -204,17 +204,6 @@ export default {
       cluePositiveFeedbackElem.style.removeProperty('transform');
       clue.classList.add('is--hidden');
     }, 500);
-  },
-
-  updateUnknowns: function(target, unknownClues) {
-    target.querySelector('.label').textContent = 'Unknown (' + unknownClues + ')';
-  },
-
-  revealTarget: function(target, label, clue) {
-    Audio.sfx('reveal');
-    target.querySelector('.bgimg').src = target.querySelector('.bgimg').src.replace('-unknown', '-known');
-    target.classList.remove('unknown');
-    target.querySelector('.label').textContent = Props.mapName(label);
   },
 
   wrongClue: function(clueId) {

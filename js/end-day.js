@@ -41,7 +41,8 @@ export default {
           chip.querySelector('.speech-bubble--clue').classList.remove('is--hidden');
         } else if (newClueOrItem && newClueOrItem.type === 'item') {
           interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').src =  './img/desk/' + newClueOrItem.key + '.png';
-          chip.querySelector('.speech-bubble--item').classList.remove('is--hidden');          
+          chip.querySelector('.speech-bubble--item').classList.remove('is--hidden');
+          document.getElementById(newClueOrItem.key).classList.remove('is--hidden');
         }
       } else {
         interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').classList.add('is--hidden');
@@ -65,7 +66,6 @@ export default {
     endDayContainer.querySelector('.day').textContent = nextDay;
     if (nextDay === 2) {
       document.getElementById('letter').classList.add('is--hidden');
-      /*document.getElementById('photo-seccam').classList.remove('is--hidden');*/
     }
     const allSnippets = document.querySelectorAll('#viewport main .clue-snippet');    
     [...allSnippets].forEach((snippet) => {
