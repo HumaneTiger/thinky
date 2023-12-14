@@ -30,13 +30,16 @@ export default {
     });
     [...allAssistantChips].forEach(chip => {
       if (chip.classList.contains('active')) {
+        const interriogatedPerson = chip.dataset.interrogation;
         interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').classList.remove('is--hidden');
         interrogationsContainer.classList.remove('out--right');
-        const newClueOrItem = Props.getNewThing(chip.dataset.interrogation);
+        const newClueOrItem = Props.getNewThing(interriogatedPerson);
         chip.classList.remove('active');
-        if (chip.dataset.interrogation === 'nico-galanis') {
+        if (interriogatedPerson === 'nico-galanis') {
           chip.querySelector('.speech-bubble--victim-clue').classList.remove('is--hidden');
+          Desk.addFinding(interriogatedPerson, newClueOrItem);
         } else if (newClueOrItem && newClueOrItem.type === 'clue') {
+          Desk.addFinding(interriogatedPerson, newClueOrItem);
           interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').src =  './img/end-day/new-entry.png';
           chip.querySelector('.speech-bubble--clue').classList.remove('is--hidden');
         } else if (newClueOrItem && newClueOrItem.type === 'item') {

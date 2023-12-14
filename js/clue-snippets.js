@@ -26,16 +26,18 @@ export default {
 
   initClues: function() {
     const allClues = Props.getAllClues();
-    const allInterrogations = Props.getAllInterrogation();
     const allSolutions = Props.getAllSolutions();
+    const isHidden = 'is--hidden'; // is--hidden
     let left = 1480, top = 140;
+    /*
+    const allInterrogations = Props.getAllInterrogation();
     for (var interrogation in allInterrogations) {
       for (var clue in allInterrogations[interrogation]) {
         if (allInterrogations[interrogation][clue] !== true) {
           allClues[clue] = allInterrogations[interrogation][clue];
         }
       }
-    }
+    }*/
     for (var clue in allClues) {
       originalPosition[clue] = {
         left: (top > 900 ? left + 30 : left),
@@ -43,7 +45,7 @@ export default {
       }
       viewport.insertAdjacentHTML(
         'beforeend',
-        '<div class="clue-snippet font--typewriter is--hidden" data-clue-snippet="' + clue + '" style="left: ' + originalPosition[clue].left + 'px; top: ' + originalPosition[clue].top + 'px;">' +
+        '<div class="clue-snippet font--typewriter ' + isHidden + '" data-clue-snippet="' + clue + '" style="left: ' + originalPosition[clue].left + 'px; top: ' + originalPosition[clue].top + 'px;">' +
         '<p>' + allClues[clue] + '</p></div>'
       );
       left += 50;
@@ -89,6 +91,8 @@ export default {
           constClueSnippet.style.left = snippetLeft;
           constClueSnippet.style.top = snippetTop;            
         }, 800);
+      } else {
+        console.log('Missing clue snippet for: ' + clue);
       }
     }
   },

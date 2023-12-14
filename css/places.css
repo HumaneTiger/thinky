@@ -18,13 +18,13 @@
 }
 
 #places {
-  padding: 150px 100px 150px 500px;
+  padding: 78px 0 0 398px;
 }
 
 #map {
   filter: drop-shadow(0 3px 6px rgb(64, 54, 50));
-  width: 1048px;
-  transform: rotate(-15deg);
+  width: 1250px;
+  transform: rotate(-11deg);
 }
 
 .place--marker {
@@ -34,20 +34,20 @@
 }
 
 #morning-cafe {
-  top: 409px;
-  left: 765px;
+  top: 428px;
+  left: 721px;
   transform: rotate(5deg);
 }
 
 #bailey-diner {
-  top: 446px;
-  left: 907px;
+  top: 391px;
+  left: 809px;
   transform: rotate(-3deg);
 }
 
 #knight-antiques {
   top: 287px;
-  left: 1169px;
+  left: 1149px;
   transform: rotate(15deg);
 }
 
@@ -59,19 +59,24 @@
 
 #zinc-jewelers {
   top: 721px;
-  left: 707px;
+  left: 600px;
   transform: rotate(8deg);
 }
 
 #readwell-books {
-  top: 504px;
-  left: 1061px;
+  top: 720px;
+  left: 1377px;
   transform: rotate(-1deg);
 }
 
 #audio-forge {
-  top: 527px;
-  left: 1265px;
+  top: 586px;
+  left: 739px;
+  transform: rotate(5deg);
+}
+#blue-dream {
+  top: 790px;
+  left: 879px;
   transform: rotate(5deg);
 }
 

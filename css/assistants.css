@@ -5,6 +5,7 @@
   height: 100%;
   transition: transform 0.2s ease-out;
   transition-delay: 250ms;
+  z-index: 3;
 }
 
 #assistants.out--left {
@@ -41,6 +42,7 @@
 .assistant--chip .label {
   width: 132px;
   font-size: 20px;
+  line-height: 1.8em;
   bottom: -24px;
   left: 10px;
   z-index: 2;
@@ -80,25 +82,25 @@
   transform: translateY(-40px);
 }
 
-#frederice {
+#maja {
   top: 370px;
   left: 0;
 }
-#assistants.end-day #frederice {
+#assistants.end-day #maja {
   transform: translateY(-14px);
 }
-#frederice .label {
+#maja .label {
   transform: rotate(2deg);
 }
 
-#maja {
+#frederice {
   top: 540px;
   left: 0;
 }
-#assistants.end-day #maja {
+#assistants.end-day #frederice {
   transform: translateY(14px);
 }
-#maja .label {
+#frederice .label {
   transform: rotate(-3deg);
 }
 

@@ -1,5 +1,6 @@
 import Props from './props.js'
 import Audio from './audio.js'
+import Desk from './desk.js'
 
 const personsContainer = document.getElementById('persons');
 const registerContainer = document.getElementById('register');
@@ -42,6 +43,8 @@ export default {
     target.querySelector('.bgimg').src = target.querySelector('.bgimg').src.replace('-unknown', '-known');
     target.classList.remove('unknown');
     target.querySelector('.label').textContent = Props.mapName(label);
+    Desk.unlockRegisterPage(label);
+    Desk.unlockPhoneAvatar(label);
   },
 
   generateRegister: function(solution) {

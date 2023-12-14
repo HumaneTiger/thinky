@@ -149,15 +149,20 @@ export default {
 
   },
 
-  hide: function() {
-    assistantsContainer.classList.add('out--left');
-  },
-
-  show: function() {
+  resetAll: function() {
     let allAssistantChips = assistantsContainer.querySelectorAll('.assistant--chip');
     [...allAssistantChips].forEach(chip => {
       this.resetDraggedElement(chip);
     });
+  },
+
+  hide: function() {
+    this.resetAll();
+    assistantsContainer.classList.add('out--left');
+  },
+
+  show: function() {
+    this.resetAll();
     assistantsContainer.classList.remove('out--left');
   }
 

@@ -10,7 +10,6 @@ export default {
   },
 
   hide: function(out) {
-    console.log(out);
     placesContainer.classList.remove('out--' + ('rightleft'.replace(out, '')));
     placesContainer.classList.add('out--' + out);
   },

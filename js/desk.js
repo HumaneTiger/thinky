@@ -6,6 +6,7 @@ import Persons from './persons.js'
 import Places from './places.js'
 
 const deskContainer = document.getElementById('desk');
+const registerContainer = document.getElementById('register');
 const letterPoliceContainer = document.getElementById('letter-police');
 
 export default {
@@ -26,10 +27,50 @@ export default {
       letterPoliceContainer.classList.remove('out');
       document.getElementById('letter').classList.add('aside', 'no--hover');
     }
+    if (target && target.closest('.tab')) {
+      ev.preventDefault();
+      this.showRegisterPage(target.closest('.tab'));
+    }
   },
 
+  showRegisterPage: function(tab) {
+    const person = tab.id.split('tab-')[1];
+    document.getElementById('tab-' + person).classList.remove('new');
+    if (!tab.classList.contains('active')) {
+      Audio.sfx('shuffle-page', 0, 1);
+      registerContainer.querySelector('.tab.active').classList.remove('active');
+      tab.classList.add('active');
+      registerContainer.querySelector('.page:not(.is--hidden)').classList.add('is--hidden');
+      document.getElementById('page-' + person).classList.remove('is--hidden');
+    }
+  },
+  unlockRegisterPage: function(person) {
+    const personPage = document.getElementById('page-' + person);
+    personPage.classList.remove('unknown');
+    personPage.classList.add('known');
+    personPage.querySelector('.profile').src = personPage.querySelector('.profile').src.replace('-unknown', '-known');
+    document.getElementById('tab-' + person).classList.add('new');
+  },
+
+  addFinding: function(interriogatedPerson, newClueOrItem) {
+    const personPage = document.getElementById('page-' + interriogatedPerson);
+    if (personPage) {
+      personPage.querySelector('.findings p.none').classList.add('is--hidden');
+      if (interriogatedPerson === 'nico-galanis') {
+        personPage.querySelector('.findings').innerHTML += '<p><em>Assistant on Day ' + Props.getGameProp('day') + ':</em> "' + newClueOrItem.value + '"</p>'
+      } else {
+        personPage.querySelector('.findings').innerHTML += '<p><em>' + Props.mapName(interriogatedPerson) + ' on Day ' + Props.getGameProp('day') + ':</em> "' + newClueOrItem.value + '"</p>'
+      }
+      document.getElementById('tab-' + interriogatedPerson).classList.add('new');
+    } else {
+      console.log('Register page for person ' + interriogatedPerson + ' can\'t be found.');
+    }
+  },
+  unlockPhoneAvatar: function (label) {
+    const personProfile = document.querySelector('#phone .message.' + label);
+    personProfile.classList.add('known');
+  },
   typeFeedback: function(ev) {
-    console.log('fff');
     Audio.sfx('typewriter-hit')
   },
 

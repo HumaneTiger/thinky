@@ -171,11 +171,11 @@
 }
 
 #item-antiques-recipe {
-  left: 822px;
-  top: 680px;
+  left: 201px;
+  top: 114px;
   width: 270px;
   height: 290px;
-  transform: rotate(5deg);
+  transform: rotate(-30deg);
 }
 
 div[data-clue="table-chairs"] {
@@ -229,6 +229,27 @@ div[data-clue="knife-blade"] {
   width: 195px;
   transform: rotate(-15deg);
 }
+div[data-clue="dnd-poster"] {
+  position: absolute;
+  top: 309px;
+  left: 98px;
+  height: 152px;
+  width: 283px;
+}
+div[data-clue="play-music"] {
+  position: absolute;
+  bottom: -124px;
+  left: 78px;
+  height: 99px;
+  width: 369px;
+}
+div[data-clue="black-flower-petal"] {
+  position: absolute;
+  top: 39px;
+  left: 27px;
+  height: 80px;
+  width: 80px;
+}
 
 #register {
   left: -150px;
@@ -281,6 +302,17 @@ div[data-clue="knife-blade"] {
   transition: transform 0.1s ease-out;
   cursor: pointer;
 }
+#register .tab.new::after {
+  content: '';
+  position: absolute;
+  right: 18px;
+  top: 15px;
+  width: 18px;
+  height: 18px;
+  background-image: url(../img/ui/clue-new.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 #register .tab.victim {
   background-image: url(../img/desk/register-tab-red.png);
 }
@@ -320,10 +352,15 @@ div[data-clue="knife-blade"] {
   font-weight: bold;
   margin: 0;
 }
-#register .page.unknown h3:not(.unknown) {
+#register .page.unknown h3.known {
   display: none;
 }
-#register .page.unknown p.summary {
+#register .page.known h3.unknown {
+  display: none;
+}
+#register .page.unknown p.summary,
+#register .page.unknown p.summary-2,
+#register .page.unknown div.findings {
   filter: blur(4px);
 }
 #register .page h2 {
@@ -340,11 +377,159 @@ div[data-clue="knife-blade"] {
   position: relative;
 }
 #register .page p.summary {
-  margin: 20px 0 30px 0;
-  width: 300px;
+  margin: 20px 0 0 0;
+  width: 320px;
+}
+#register .page p.summary-2 {
+  margin: 0.5em 0 30px 0;
 }
 #register .page em {
   font-weight: bold;
   font-size: 22px;
   font-style: normal;
+}
+#register .page .findings {
+  height: 470px;
+  padding-right: 10px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+#phone {
+  width: 308px;
+  height: 630px;
+  left: 300px;
+  top: 380px;
+  transform: rotate(-6deg);
+}
+#phone .canvas {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  margin: 5px;
+  border-radius: 46px;
+}
+#phone .profile {
+  background-repeat: no-repeat;
+  background-size: 128%;
+  background-position: -7px -3px;
+  position: absolute;
+  left: -64px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px #faf9ed solid;
+  box-shadow: 0 4px 4px rgba(15, 60, 84, 0.25);
+}
+#phone .matt-bishop .profile {
+  background-image: url(../img/persons/matt-bishop-unknown.png);
+}
+#phone .delaney-cane .profile {
+  background-image: url(../img/persons/delaney-cane-unknown.png);
+}
+#phone .parker-bailey .profile {
+  background-image: url(../img/persons/parker-bailey-unknown.png);
+}
+#phone .donna-fischer .profile {
+  background-image: url(../img/persons/donna-fischer-unknown.png);
+}
+#phone .ophelia-easton .profile {
+  background-image: url(../img/persons/ophelia-easton-unknown.png);
+}
+#phone .willow-bryce .profile {
+  background-image: url(../img/persons/willow-bryce-unknown.png);
+}
+#phone .emmett-moss .profile {
+  background-image: url(../img/persons/emmett-moss-unknown.png);
+}
+#phone .nico-galanis .profile {
+  background-image: url(../img/persons/nico-galanis-unknown.png);
+}
+#phone .matt-bishop.known .profile {
+  background-image: url(../img/persons/matt-bishop-known.png);
+}
+#phone .delaney-cane.known .profile {
+  background-image: url(../img/persons/delaney-cane-known.png);
+}
+#phone .parker-bailey.known .profile {
+  background-image: url(../img/persons/parker-bailey-known.png);
+}
+#phone .donna-fischer.known .profile {
+  background-image: url(../img/persons/donna-fischer-known.png);
+}
+#phone .ophelia-easton.known .profile {
+  background-image: url(../img/persons/ophelia-easton-known.png);
+}
+#phone .willow-bryce.known .profile {
+  background-image: url(../img/persons/willow-bryce-known.png);
+}
+#phone .emmett-moss.known .profile {
+  background-image: url(../img/persons/emmett-moss-known.png);
+}
+#phone .nico-galanis.known .profile {
+  background-image: url(../img/persons/nico-galanis-known.png);
+}
+#phone .optic {
+  z-index: 5;
+  position: absolute;
+  top: 12px;
+  left: 114px;
+  width: 78px;
+}
+#phone .message {
+  position: relative;
+  margin: 20px 30px 20px 80px;
+  background-color: rgba(162, 73, 124, 0.75);;
+  color: #faf9ed;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  padding: 8px 8px 11px;
+  width: 200px;
+  border-radius: 15px;
+  box-shadow: 0 4px 4px rgba(162, 73, 124, 0.25);
+}
+#phone .message.position--right {
+  margin: 20px 80px 20px 20px;
+}
+#phone .message.position--right .profile {
+  left: initial;
+  right: -64px;
+}
+#phone .message p {
+  margin: 2px 0 0;
+}
+
+#item-dnd-poster {
+  left: 580px;
+  top: 184px;
+  transform: rotate(5deg);
+}
+
+#item-flower-petals {
+  width: 180px;
+  height: 180px;
+  left: 620px;
+  bottom: 100px;
+}
+#item-rejection-letter {
+  width: 339px;
+  height: 434px;
+  left: 785px;
+  top: 506px;
+  transform: rotate(-20deg);
+}
+#item-rejection-letter .content {
+  z-index: 2;
+  padding: 5px 30px;
+  font-family: Handlee;
+  position: relative;
+  line-height: 1.35em;
+  font-size: 21px;
+  color: #113B54;
 }

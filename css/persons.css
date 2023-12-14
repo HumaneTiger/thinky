@@ -21,7 +21,40 @@
   padding: 180px 100px 180px 300px;
   text-align: center;
 }
-
+#persons .connection {
+  position: absolute;
+  z-index: 2;
+}
+#persons .connect-1 {
+  left: 617px;
+  top: 348px;
+  transform: rotate(35deg);
+}
+#persons .connect-2 {
+  left: 1050px;
+  top: 340px;
+  transform: rotate(40deg);
+}
+#persons .connect-3 {
+  left: 465px;
+  top: 658px;
+  transform: rotate(-22deg);
+}
+#persons .connect-4 {
+  left: 906px;
+  top: 607px;
+  transform: rotate(31deg);
+}
+#persons .connect-5 {
+  left: 635px;
+  top: 746px;
+  transform: rotate(-5deg);
+}
+#persons .connect-6 {
+  left: 963px;
+  top: 449px;
+  transform: rotate(5deg);
+}
 #nico-galanis {
   top: 409px;
   left: 765px;
