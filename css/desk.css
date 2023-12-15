@@ -135,12 +135,18 @@
 }
 
 #item-knife {
-  left: 282px;
-  top: 242px;
+  left: 620px;
+  top: 892px;
   width: 380px;
   height: 150px;
 }
-
+#bent-key {
+  left: 320px;
+  top: 192px;
+  width: 320px;
+  height: 122px;
+  transform: rotate(-10deg);
+}
 #item-photo-crime-1 {
   left: 180px;
   top: 584px;

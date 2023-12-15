@@ -29,26 +29,34 @@ export default {
       snippet.classList.add('out');
     });
     [...allAssistantChips].forEach(chip => {
+      interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').src =  './img/end-day/nothing.png';
       if (chip.classList.contains('active')) {
         const interriogatedPerson = chip.dataset.interrogation;
         interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').classList.remove('is--hidden');
         interrogationsContainer.classList.remove('out--right');
         const newClueOrItem = Props.getNewThing(interriogatedPerson);
         chip.classList.remove('active');
-        if (interriogatedPerson === 'nico-galanis') {
-          chip.querySelector('.speech-bubble--victim-clue').classList.remove('is--hidden');
-          Desk.addFinding(interriogatedPerson, newClueOrItem);
-        } else if (newClueOrItem && newClueOrItem.type === 'clue') {
-          Desk.addFinding(interriogatedPerson, newClueOrItem);
+        if (newClueOrItem && newClueOrItem.type === 'clue') {
           interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').src =  './img/end-day/new-entry.png';
-          chip.querySelector('.speech-bubble--clue').classList.remove('is--hidden');
+          Desk.addFinding(interriogatedPerson, newClueOrItem);
+          if (interriogatedPerson === 'nico-galanis') {
+            chip.querySelector('.speech-bubble--victim-clue').classList.remove('is--hidden');
+          } else {
+            chip.querySelector('.speech-bubble--clue').classList.remove('is--hidden');
+          }
         } else if (newClueOrItem && newClueOrItem.type === 'item') {
-          interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').src =  './img/desk/' + newClueOrItem.key + '.png';
           chip.querySelector('.speech-bubble--item').classList.remove('is--hidden');
-          document.getElementById(newClueOrItem.key).classList.remove('is--hidden');
+          if (document.getElementById(newClueOrItem.key)) {
+            interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').src =  './img/desk/' + newClueOrItem.key + '.png';
+            document.getElementById(newClueOrItem.key).classList.remove('is--hidden');
+          } else {
+            console.log('Item ' + newClueOrItem.key + ' missing on the desk.');
+          }
+        } else {
+          /* no findings */
+          chip.querySelector('.speech-bubble--nope').classList.remove('is--hidden');
         }
       } else {
-        interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').classList.add('is--hidden');
         chip.classList.add('at--home');
       }
       chip.removeAttribute('style');
@@ -77,8 +85,9 @@ export default {
     [...allAssistantChips].forEach(chip => {
       chip.classList.remove('is--locked', 'no--hover', 'at--home');
       chip.querySelector('.speech-bubble--victim-clue').classList.add('is--hidden');
-      chip.querySelector('.speech-bubble--item').classList.add('is--hidden');
       chip.querySelector('.speech-bubble--clue').classList.add('is--hidden');
+      chip.querySelector('.speech-bubble--item').classList.add('is--hidden');
+      chip.querySelector('.speech-bubble--nope').classList.add('is--hidden');
     });
     assistantsContainer.classList.remove('end-day');
     if (Props.getGameProp('mode') === 'desk') {

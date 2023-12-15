@@ -46,10 +46,14 @@ export default {
   },
   unlockRegisterPage: function(person) {
     const personPage = document.getElementById('page-' + person);
-    personPage.classList.remove('unknown');
-    personPage.classList.add('known');
-    personPage.querySelector('.profile').src = personPage.querySelector('.profile').src.replace('-unknown', '-known');
-    document.getElementById('tab-' + person).classList.add('new');
+    if (personPage) {
+      personPage.classList.remove('unknown');
+      personPage.classList.add('known');
+      personPage.querySelector('.profile').src = personPage.querySelector('.profile').src.replace('-unknown', '-known');
+      document.getElementById('tab-' + person).classList.add('new');  
+    } else {
+      console.log('Can not find register page for ' + person);
+    }
   },
 
   addFinding: function(interriogatedPerson, newClueOrItem) {
@@ -68,7 +72,11 @@ export default {
   },
   unlockPhoneAvatar: function (label) {
     const personProfile = document.querySelector('#phone .message.' + label);
-    personProfile.classList.add('known');
+    if (personProfile) {
+      personProfile.classList.add('known');
+    } else {
+      console.log('Can not find phone avatar for ' + label);
+    }
   },
   typeFeedback: function(ev) {
     Audio.sfx('typewriter-hit')
