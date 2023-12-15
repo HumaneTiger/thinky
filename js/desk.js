@@ -35,7 +35,6 @@ export default {
 
   showRegisterPage: function(tab) {
     const person = tab.id.split('tab-')[1];
-    document.getElementById('tab-' + person).classList.remove('new');
     if (!tab.classList.contains('active')) {
       Audio.sfx('shuffle-page', 0, 1);
       registerContainer.querySelector('.tab.active').classList.remove('active');

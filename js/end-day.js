@@ -24,9 +24,13 @@ export default {
   show: function() {
     endDayContainer.classList.remove('out');
     const allSnippets = document.querySelectorAll('#viewport main .clue-snippet');
+    const allTabs = document.querySelectorAll('#register .tabs .tab');
     [...allSnippets].forEach((snippet) => {
       snippet.classList.remove('new');
       snippet.classList.add('out');
+    });
+    [...allTabs].forEach((tab) => {
+      tab.classList.remove('new');
     });
     [...allAssistantChips].forEach(chip => {
       interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').src =  './img/end-day/nothing.png';
@@ -54,7 +58,11 @@ export default {
           }
         } else {
           /* no findings */
+          const personContainerNothingNew = document.querySelector('#' + interriogatedPerson + ' .nothing-new');
           chip.querySelector('.speech-bubble--nope').classList.remove('is--hidden');
+          if (personContainerNothingNew) {
+            personContainerNothingNew.classList.remove('is--hidden');
+          }
         }
       } else {
         chip.classList.add('at--home');

@@ -137,3 +137,14 @@
   width: 123px;
   transform: rotate(-85deg);
 }
+
+.profile--photo .nothing-new {
+  position: absolute;
+  right: 13px;
+  top: 15px;
+  width: 43px;
+  height: 25px;
+  background-image: url(../img/ui/bubble-icon-nope.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}

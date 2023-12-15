@@ -24,6 +24,18 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+.clue-snippet.interview::before {
+  content: '';
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 28px;
+  height: 18px;
+  background-image: url(../img/ui/bubble-icon.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+}
 
 .clue-snippet:hover {
   filter: drop-shadow(0 3px 4px rgba(97, 82, 75, 0.5));

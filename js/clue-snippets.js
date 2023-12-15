@@ -77,6 +77,9 @@ export default {
         target.classList.add('extracted');
         constClueSnippet.classList.remove('is--hidden');
         constClueSnippet.classList.add('new');
+        if (target.closest('.findings') && !target.closest('#page-nico-galanis')) {
+          constClueSnippet.classList.add('interview');
+        }
 
         const snippetLeft = constClueSnippet.style.left,
               snippetTop = constClueSnippet.style.top,
