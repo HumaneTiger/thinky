@@ -35,6 +35,39 @@
           </h1>
           <div class="button button--peach" id="button-lets-go">Let's go Home</div>
         </div>
+        <div class="button button--finale is--hidden" id="button-finale">Solve the Case</div>
+        <div id="finale" class="out">
+          <h1 class="headline">
+            Let's solve this case!
+          </h1>
+          <div id="murderer-1" class="physical--item profile--photo no--hover drag-target unknown">
+            <img src="./img/persons/murderer-1-unknown.png" class="bgimg">
+            <div class="label">Murderer One</div>
+          </div>
+          <div id="murderer-2" class="physical--item profile--photo no--hover drag-target unknown">
+            <img src="./img/persons/murderer-2-unknown.png" class="bgimg">
+            <div class="label">Murderer Two</div>
+          </div>
+          <div id="content-solved">
+            <p>
+              Ophelia got into it because of her resentment against Nico at driving up the rent prices and not being a “real shop owner”. While talking with Matt she discovered that he had it out for Nico for buying a “cheap” painting from him that he found later was actually very expensive.
+            </p>
+            <p>
+              So, after some argument, they go to the store, holding a Marilyn Monroe bust they want to use to break the window and the knife Matt pretended to sell so he could use it without scrutiny. However, they didn’t want to raise Nico’s suspicions immediately; even if they were in disguise, they didn’t want to give him time to react. So Ophelia used her house key to open the door. From there, they sneak in and kill Nico quickly
+            </p>
+            <p>
+              In the kerfuffle, however, the key is lost. They intended to have more time to work through the room and hide the evidence, but now, they have to rush. They tear the place apart, Matt breaks into the safe because Nico kept it there. Ophelia takes the sapphire ring that belonged to Nico’s late wife.
+            </p>
+            <p>
+              However, there was another clue Ophelia wanted to leave behind, to muddy the waters further. She knew from peering at Parker’s shop that Parker always bought black dahlias for his wife. However, buying them for herself would make it suspicious. So she instead talked Emmett into going on a date with Donna, the girl he had a crush on, and lied to him about those being her favorite flowers. She then stole a few petals while she was “helping him set up”
+            </p>
+            <p style="text-align: center; font-size: 24px;">
+              <strong>Thank you so much for playing our entry. And congratulations for solving the case!</strong>
+              Your feedback is highly welcome!
+            </p>
+          </div>
+          <div class="button button--peach" id="button-go-back">Go Back</div>
+        </div>
         <div id="day-count" class="headline">
           D<span class="headline--smaller">ay</span> <span class="day">1</span>
         </div>
@@ -49,10 +82,6 @@
           </div>
         </div>
         <div id="desk">
-          <div id="item-photo-seccam" class="physical--item is--hidden">
-            <img src="./img/desk/photo-seccam.png" class="bgimg">
-            <div class="clue" data-clue="secury-cam"></div>
-          </div>
           <div id="letter" class="physical--item">
             <img src="./img/desk/letter-intro.png" class="bgimg">
             <input type="text" id="detective-name" placeholder="Starling" class="font--typewriter" maxlength="10">
@@ -98,14 +127,13 @@
           </div>
           <!-- credit: https://www.freepik.com/free-photos-vectors/flower-petals -->
           <div id="item-flower-petals" class="physical--item is--hidden">
-            <img src="./img/desk/black-petals.png" class="bgimg">
+            <img src="./img/desk/item-flower-petals.png" class="bgimg">
             <div class="clue" data-clue="black-flower-petal"></div>
           </div>
           <div id="item-photo-crime-1" class="physical--item scale--bigger is--hidden">
             <img src="./img/desk/item-photo-crime-1.png" class="bgimg">
             <div class="clue" data-clue="table-chairs"></div>
             <div class="clue" data-clue="friday-specials"></div>
-            <div class="clue" data-clue="clock-time"></div>
             <img src="./img/desk/note-crime-scene.png" class="note--crime">
           </div>
           <div id="item-photo-crime-2" class="physical--item scale--bigger is--hidden">
@@ -114,16 +142,17 @@
             <div class="clue" data-clue="shop-down-street"></div>
             <img src="./img/desk/note-crime-scene.png" class="note--crime">
           </div>
-          <div id="item-knife" class="physical--item is--hidden">
-            <img src="./img/desk/item-knife.png" class="bgimg">
-            <div class="clue" data-clue="knife-blade"></div>
-          </div>
           <div id="item-antiques-recipe" class="physical--item scale--bigger is--hidden">
             <img src="./img/desk/item-antiques-recipe.png" class="bgimg">
             <div class="clue" data-clue="antiques-recipe"></div>
           </div>
           <div id="bent-key" class="physical--item is--hidden">
             <img src="./img/desk/bent-key.png" class="bgimg">
+            <div class="clue" data-clue="key-bd"></div>
+          </div>
+          <div id="item-safe" class="physical--item drag-target unknown is--hidden">
+            <img src="./img/desk/item-safe.png" class="bgimg">
+            <img src="./img/desk/note-code-missing.png" class="note--crime">
           </div>
           <div id="phone" class="physical--item is--hidden">
             <img src="./img/desk/phone.png" class="bgimg">
@@ -142,7 +171,7 @@
               <div class="message parker-bailey position--right">
                 <div class="profile"></div>
                 <em>PARKER (Friday)</em>
-                <p>Yay! Really looking forward - count me in! <span class="clue" data-clue="pink-floyd">Listening to some Pink Floyd songs</span> while exploring dungeons would be great.</p>
+                <p>Yay! Really looking forward - count me in! Listening to some Pink Floyd songs while exploring dungeons would be great.</p>
               </div>
               <div class="message donna-fischer">
                 <div class="profile"></div>
@@ -171,14 +200,27 @@
               </div>
             </div>
           </div>
-          <!--
-          <div id="item-flyer-diner" class="physical--item">
-            <img src="./img/desk/item-flyer-diner.png" class="bgimg">
+          <div id="sold-ring-record" class="physical--item is--hidden">
+            <img src="./img/desk/sold-ring-record.png" class="bgimg">
+            <div class="clue" data-clue="sold-ring"></div>
           </div>
-          <div id="item-dnd-poster" class="physical--item">
-            <img src="./img/desk/item-dnd-poster.png" class="bgimg">
+          <div id="photo-seccam" class="physical--item is--hidden">
+            <img src="./img/desk/photo-seccam.png" class="bgimg">
+            <div class="clue" data-clue="secury-cam"></div>
+            <div class="clue" data-clue="safe-code"></div>
           </div>
-          -->
+          <div id="empty-box" class="physical--item is--hidden"> <!-- opehelia -->
+            <img src="./img/desk/empty-box.png" class="bgimg">
+            <div class="clue" data-clue="wedding-ring"></div>
+          </div> <!-- + blue dream key --> <!-- + looked after his bakery -->
+          <div id="mr-chess" class="physical--item is--hidden"> <!-- matt -->
+            <img src="./img/desk/mr-chess.png" class="bgimg">
+            <div class="clue" data-clue="threat-letter"></div>
+          </div>
+          <div id="auction-house" class="physical--item is--hidden"> <!-- matt -->
+            <img src="./img/desk/auction-house.png" class="bgimg">
+            <div class="clue" data-clue="valuable-painting"></div>
+          </div>
           <div id="register" class="physical--item">
             <img src="./img/desk/persons-register.png" class="bgimg">
             <div class="pages">
@@ -488,11 +530,13 @@
       </main>
     </div>
     <div id="all-audio">
-      <audio class="music-ambient-1" src="./audio/grotto.mp3" preload></audio>
+      <!-- credits. https://www.youtube.com/watch?v=tayvhdHPAkA -->
+      <audio class="music-ambient-1" src="./audio/office-background-ambience.mp3" preload></audio>
       <audio class="sfx-collect" src="./audio/fx/collect.mp3" preload></audio>
       <audio class="sfx-shuffle-paper" src="./audio/fx/shuffle-paper.mp3" preload></audio>
       <audio class="sfx-shuffle-page" src="./audio/fx/shuffle-page.mp3" preload></audio>
       <audio class="sfx-success" src="./audio/fx/success-2.wav" preload></audio>
+      <audio class="sfx-solved" src="./audio/fx/success.wav" preload></audio>
       <audio class="sfx-reveal" src="./audio/fx/reveal.wav" preload></audio>
       <audio class="sfx-wrong" src="./audio/fx/wrong.wav" preload></audio>
       <audio class="sfx-swoosh" src="./audio/fx/swoosh.mp3" preload></audio>

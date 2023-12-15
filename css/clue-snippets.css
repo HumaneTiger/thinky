@@ -40,7 +40,7 @@
 .clue-snippet:hover {
   filter: drop-shadow(0 3px 4px rgba(97, 82, 75, 0.5));
   transform: translateY(-5px);
-  z-index: 21;
+  z-index: 23;
 }
 
 .clue-snippet p {
@@ -49,15 +49,20 @@
   margin: 0;
   font-size: 21px;
 }
-
+/*
 .clue-snippet[data-clue-snippet="bakery"] {
   left: 1550px;
   top: 440px;
 }
-
 .clue-snippet[data-clue-snippet="nico-galanis"] {
   left: 1600px;
   top: 500px;
+}*/
+
+.clue-snippet[data-clue-snippet="safe-code"] p {
+  font-family: Handlee;
+  font-size: 52px;
+  padding-left: 56px;
 }
 
 .clue-snippet.grabbed {

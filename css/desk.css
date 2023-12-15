@@ -115,14 +115,6 @@
   transform: rotate(5deg);
 }
 
-#photo-seccam .clue {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  height: 29px;
-  width: 174px;
-}
-
 #item-photo-crime-1,
 #item-photo-crime-2,
 #item-flyer-diner,
@@ -135,7 +127,7 @@
 }
 
 #item-knife {
-  left: 620px;
+  left: 750px;
   top: 892px;
   width: 380px;
   height: 150px;
@@ -186,16 +178,16 @@
 
 div[data-clue="table-chairs"] {
   position: absolute;
-  top: 20px;
-  right: 236px;
-  height: 76px;
+  top: 23px;
+  right: 267px;
+  height: 84px;
   width: 94px;
 }
 div[data-clue="friday-specials"] {
   position: absolute;
-  top: 131px;
-  right: 149px;
-  height: 116px;
+  top: 179px;
+  right: 104px;
+  height: 96px;
   width: 118px;
   transform: rotate(20deg);
 }
@@ -208,17 +200,17 @@ div[data-clue="clock-time"] {
 }
 div[data-clue="bust-pavement"] {
   position: absolute;
-  top: 144px;
-  right: 196px;
+  top: 177px;
+  right: 177px;
   height: 55px;
   width: 62px;
 }
 div[data-clue="shop-down-street"] {
   position: absolute;
   top: 16px;
-  right: 116px;
-  height: 47px;
-  width: 72px;
+  right: 107px;
+  height: 83px;
+  width: 87px;
 }
 div[data-clue="antiques-recipe"] {
   position: absolute;
@@ -255,6 +247,28 @@ div[data-clue="black-flower-petal"] {
   left: 27px;
   height: 80px;
   width: 80px;
+}
+div[data-clue="secury-cam"] {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 29px;
+  width: 174px;
+}
+div[data-clue="safe-code"] {
+  position: absolute;
+  bottom: 20px;
+  left: 302px;
+  height: 33px;
+  width: 75px;
+}
+div[data-clue="key-bd"] {
+  position: absolute;
+  top: 74px;
+  left: 246px;
+  height: 33px;
+  width: 75px;
+  transform: rotate(30deg);
 }
 
 #register {
@@ -520,7 +534,7 @@ div[data-clue="black-flower-petal"] {
 #item-flower-petals {
   width: 180px;
   height: 180px;
-  left: 620px;
+  left: 680px;
   bottom: 100px;
 }
 #item-rejection-letter {
@@ -538,4 +552,77 @@ div[data-clue="black-flower-petal"] {
   line-height: 1.35em;
   font-size: 21px;
   color: #113B54;
+}
+#item-safe {
+  left: 700px;
+  top: 50px;
+  width: 350px;
+  height: 350px;
+}
+#item-safe .note--crime {
+  position: absolute;
+  top: 180px;
+  left: 180px;
+  width: 140px;
+  transform: rotate(-40deg);
+}
+#item-safe:not(.unknown) .note--crime {
+  display: none;
+}
+#empty-box {
+  left: 1057px;
+  top: 177px;
+  width: 350px;
+  height: 350px;
+  transform: rotate(15deg);
+}
+#sold-ring-record {
+  left: 126px;
+  top: 349px;
+  width: 280px;
+  height: 211px;
+  transform: rotate(-8deg);
+}
+#mr-chess {
+  left: 393px;
+  top: 314px;
+  width: 270px;
+  height: 350px;
+  transform: rotate(20deg);
+}
+#auction-house {
+  left: 834px;
+  top: 585px;
+  width: 350px;
+  height: 350px;
+  transform: rotate(-10deg);
+}
+
+div[data-clue="sold-ring"] {
+  position: absolute;
+  top: 44px;
+  left: 22px;
+  height: 119px;
+  width: 243px;
+}
+div[data-clue="wedding-ring"] {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  height: 56px;
+  width: 225px;
+}
+div[data-clue="threat-letter"] {
+  position: absolute;
+  top: 20px;
+  left: 13px;
+  height: 237px;
+  width: 243px;
+}
+div[data-clue="valuable-painting"] {
+  position: absolute;
+  top: 139px;
+  left: 22px;
+  height: 53px;
+  width: 293px;
 }

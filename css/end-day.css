@@ -1,3 +1,4 @@
+#finale,
 #end-day {
   position: absolute;
   width: 100%;
@@ -5,19 +6,22 @@
   background: linear-gradient(rgba(97, 18, 55, 0.9), rgba(44, 10, 30, 0.95));
   transition: opacity 1s ease-out;
   opacity: 1;
-  z-index: 10;
+  z-index: 50;
 }
 
+#finale.out,
 #end-day.out {
-  left: -100vw;
+  left: -200vw;
   opacity: 0;
 }
 
+#finale h1,
 #end-day h1 {
   padding-top: 16px;
   text-align: center;
 }
 
+#button-go-back,
 #button-lets-go {
   position: absolute;
   bottom: 80px;
@@ -36,7 +40,7 @@
   padding-top: 110px;
   transition: transform 0.2s ease-out;
   transition-delay: 250ms;
-  z-index: 10;
+  z-index: 50;
 }
 
 #interrogations.out--right {
@@ -53,4 +57,43 @@
   width: 100%;
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+}
+
+#viewport main.finale .clue-snippet {
+  z-index: 50;
+}
+#viewport main.finale .clue-snippet:hover {
+  z-index: 51;
+}
+#viewport main.case-solved .clue-snippet {
+  display: none !important;
+}
+#button-finale {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  margin-left: -98px;
+  font-size: 24px;
+  line-height: 2.8em;
+  animation: pulseactive 4s infinite;
+  z-index: 22;
+}
+#content-solved {
+  font-family: Lora;
+  line-height: 1.3em;
+  font-size: 21px;
+  color: #faf9ed;
+  padding: 300px 300px 0 300px;
+  opacity: 0;
+  transition: opacity 1500ms ease-out;
+}
+#content-solved strong {
+  display: block;
+  padding-bottom: 12px;
+}
+
+@keyframes pulseactive {
+  0% {filter: drop-shadow(0 0 5px rgba(200, 200, 255, 0));}
+  50% {filter: drop-shadow(0 0 20px rgba(200, 200, 255, 1));}
+  100% {filter: drop-shadow(0 0 5px rgba(200, 200, 255, 0));}
 }

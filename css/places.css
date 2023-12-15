@@ -114,3 +114,15 @@
   left: 35px;
   top: 17px;
 }
+.place--marker.nothing-new::before {
+  content: '';
+  width: 40px;
+  height: 4px;
+  background-color: #3f8ac0;
+  transform: rotate(-45deg);
+  z-index: 2;
+  position: absolute;
+  top: 50px;
+  left: 30px;
+  box-shadow: 0 0 3px white;
+}

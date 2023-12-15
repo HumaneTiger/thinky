@@ -6,14 +6,13 @@ let ambientDelay = 10;
 export default {
 
     init: function() {
-        //this.playAmbientLoop();
     },
 
     playAmbientLoop: function() {
-      this.music('ambient-1', 0, 0.2);
+      this.music('ambient-1', 0, 0.1);
       window.setTimeout(() => {
         this.playAmbientLoop();
-      }, 150000);
+      }, 130000);
     },
 
     music: function(name, delay, vol) {

@@ -69,8 +69,8 @@
 
 #matt-bishop {
   top: 120px;
-  left: 1397px;
-  transform: rotate(20deg);
+  left: 1362px;
+  transform: rotate(15deg);
 }
 
 #emmett-moss {
@@ -102,6 +102,19 @@
   top: 720px;
   transform: rotate(13deg);
 }
+
+#murderer-1 {
+  left: 592px;
+  top: 330px;
+  transform: rotate(-3deg);
+}
+
+#murderer-2 {
+  left: 1110px;
+  top: 330px;
+  transform: rotate(4deg);
+}
+
 
 .profile--photo {
   position: absolute;

@@ -28,20 +28,11 @@ export default {
     const allClues = Props.getAllClues();
     const allSolutions = Props.getAllSolutions();
     const isHidden = 'is--hidden'; // is--hidden
-    let left = 1480, top = 140;
-    /*
-    const allInterrogations = Props.getAllInterrogation();
-    for (var interrogation in allInterrogations) {
-      for (var clue in allInterrogations[interrogation]) {
-        if (allInterrogations[interrogation][clue] !== true) {
-          allClues[clue] = allInterrogations[interrogation][clue];
-        }
-      }
-    }*/
+    let left = 1480, top = 100;
     for (var clue in allClues) {
       originalPosition[clue] = {
-        left: (top > 900 ? left + 30 : left),
-        top: (top > 900 ? top - 840 : top)
+        left: (top > 1000 ? left + 30 : left),
+        top: (top > 1000 ? top - 990 : top)
       }
       viewport.insertAdjacentHTML(
         'beforeend',
@@ -84,7 +75,7 @@ export default {
         const snippetLeft = constClueSnippet.style.left,
               snippetTop = constClueSnippet.style.top,
               startLeft = cluePosition.x,
-              startTop = cluePosition.y - 50;
+              startTop = cluePosition.y - 110;
 
         constClueSnippet.style.left = startLeft + 'px';
         constClueSnippet.style.top = startTop + 'px';
@@ -178,20 +169,34 @@ export default {
     const targetId = target.id,
           clueId = clue.dataset.clueSnippet;
     if (targetId && clueId) {
-      const solutionsForTarget = solutions[targetId];
-      if (solutionsForTarget.length && solutionsForTarget.includes(clueId)) {
-        const index = solutionsForTarget.indexOf(clueId);
-        solutionsForTarget.splice(index, 1);
-        if (solutionsForTarget.length === 0) {
-          this.positiveFeedback(clue);
-          Persons.revealPersonsPlacesTarget(target, targetId);
-        } else {
-          this.positiveFeedback(clue);
-          Audio.sfx('success');
-          Persons.updatePersonsPlacesUnknowns(target, solutionsForTarget.length);
-        }
+      if (targetId === 'item-safe') {
+        Audio.sfx('reveal');
+        target.classList.remove('unknown');
+        this.positiveFeedback(clue);
+        document.getElementById('empty-box').classList.remove('is--hidden');
+        document.getElementById('mr-chess').classList.remove('is--hidden');
+        document.getElementById('auction-house').classList.remove('is--hidden');
+        document.getElementById('button-finale').classList.remove('is--hidden');
       } else {
-        this.wrongClue(clueId);
+        const solutionsForTarget = solutions[targetId];
+        if (solutionsForTarget.length && solutionsForTarget.includes(clueId)) {
+          const index = solutionsForTarget.indexOf(clueId);
+          solutionsForTarget.splice(index, 1);
+          if (solutionsForTarget.length === 0) {
+            this.positiveFeedback(clue);
+            Persons.revealPersonsPlacesTarget(target, targetId);
+          } else {
+            this.positiveFeedback(clue);
+            Audio.sfx('success');
+            Persons.updatePersonsPlacesUnknowns(target, solutionsForTarget.length);
+          }
+        } else {
+          this.wrongClue(clueId);
+        }
+        if (solutions['murderer-1'].length === 0 && solutions['murderer-2'].length === 0) {
+          viewport.classList.add('case-solved');
+          EndDay.caseSolved();
+        }
       }
     }
   },

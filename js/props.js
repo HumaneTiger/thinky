@@ -13,14 +13,19 @@ var clues = {
   /* bakery photo crime 1 */
   'table-chairs': 'A building with table and chairs outside',
   'friday-specials': 'The hand-written board menu offers "Friday Specials"',
-  'clock-time': 'The clock says 9:13',
-  'knife-blade': 'It seems like this blade couldn\'t do the wound',
   /* bakery photo crime 2 */
   'bust-pavement': 'A bust and shattered glass are lying on the pavement',
   'shop-down-street': 'A shop on the other side of the river',
   /* dnd poster */
   'dnd-poster': 'Posters announcement says "Friday, Nov. 10th"',
   'play-music': 'Poster also promises a favorite music night',
+  /* parker */
+  'shopping-sprout': 'Parker was out walking from 7-10 on Friday',
+  //'pink-floyd': 'Parker likes to listen to Pink Floyd songs',
+  /* matt */
+  'sold-bust': 'Say farewell to an antique Hollywood bust',
+  'visit-antiques': 'Matt invites us to visit and examine his shop',
+  'worthless-painting': 'Matt wants a painting that Nico owned',
   /* rejection letter */
   'no-space': 'Nico has no free space in his shop to give up',
   /* coop flyer */
@@ -31,13 +36,8 @@ var clues = {
   'black-flower-petal': 'Black flower petals were found in the book shop',
   /* jeweler */
   'donna-to-jeweler': 'Donna went to Emmett\'s place Friday at 7',
-  /* parker */
-  'shopping-sprout': 'Parker was out walking from 7-10 on Friday',
-  'pink-floyd': 'Parker likes to listen to Pink Floyd songs',
-  /* matt */
-  'sold-bust': 'Say farewell to an antique Hollywood bust',
-  'visit-antiques': 'Matt invites us to visit and examine his shop',
-  'worthless-painting': 'Matt wants a painting that Nico owned',
+  'sold-ring': 'Note about an O. Easton selling a sapphire ring',
+  'camera-footage': 'The Jeweler gives us access to security footage',
   /* delaney */
   'flower-orders': 'Black and orange flowers are a Halloween sales hit',
   'check-bookshop': 'Delaney suggests to check the Bookshop',
@@ -47,17 +47,21 @@ var clues = {
   /* ophelia */
   'food-waste': 'Strange people got attracked by food waste left outside',
   'good-friend': 'Ophelia looked after the Bakery when Nico was away',
+  'key-bd': 'A key tag with the initials B.D. written on it',
   /* willow */
   'dnd-party': 'There was a DnD party Friday night',
   'missing-nico': 'Someone was missing Nico at the DnD party',
   'invite-music': 'The owner invites us to visit her music shop.',
-  'camera-footage': 'Willow gives us access to security camera footage',
   /* emmett */
   'sucking-attention': "Not everyone is happy with Nico's business",
   'dahlia-romantic': "Emmet was surpising Donna with flowers at his place",
-  'jewelry-shop-boy': "The Jewelry shop owner visited Denlaney on Friday",
+  'jewelry-shop-boy': "The Jewelry shop owner visited Delaney on Friday",
   /* others, todo */
-  'secury-cam': 'Cloaked couple walks by the music store',
+  'secury-cam': 'Cloaked couple got filmed Friday at 8:52pm',
+  'safe-code': '836429',
+  'wedding-ring': 'The box for Galanis wifes wedding ring is empty',
+  'threat-letter': 'Threatening letter demands Galani to leave the town',
+  'valuable-painting': 'Letter form an auctioneer about a valueable painting',
 }
 
 var interrogations = {
@@ -80,11 +84,11 @@ var interrogations = {
     'girls-name': '(When asked for the \'girls\' name, she said:) "I don\'t know. Maybe <span class="clue" data-clue="check-bookshop">just check the bookshop</span>?"',
   },
   'emmett-moss': {
-    'sold-jewelry':  "The cool old lady, who helped me with the dinner, sold me some jewelry today.",
+    'sold-jewelry':  "The cool old lady, who helped me with the dinner, sold me some nice jewelry.",
+    'cam-access': '<span class="clue" data-clue="camera-footage">I can give you access to my security camera footage</span>, if this helps finding the murderer.',
   },
   'donna-fischer': {
     'emmett-dahlias': '<span class="clue" data-clue="donna-to-jeweler">What I did on Friday? I went to Emmett\'s place at 7</span>. He had <span class="clue" data-clue="dahlia-romantic">all these black dahlias</span> out--I think he thought it was romantic or something.',
-    'cam-access': '<span class="clue" data-clue="camera-footage">I can give you access to my security camera footage</span>, if this helps finding the murderer.',
   },
   'willow-bryce': {
     'invite-music-shop': 'You like good music? Then <span class="clue" data-clue="invite-music">come visit me at my shop</span>!',
@@ -95,34 +99,27 @@ var interrogations = {
   'morning-cafe': {
     'item-photo-crime-1': true,
     'item-photo-crime-2': true,
-    'item-knife': true,
+    'item-safe': true,
   },
   'bailey-diner': {
     'item-dnd-poster': true,
     'item-antiques-recipe': true,
   },
   'knight-antiques': {
-    'item-shop-records': true, /* todo */
-    'item-photo-rack': true, /* todo */
   },
   'readwell-books': {
     'item-flower-petals': true,
     'item-rejection-letter': true,
-    'photo-seccam': true,
   },
   'sprout': {
-    'item-flower-petals-2': true,
   },
   'zinc-jewelers': {
-    'note-sold-ring': true, /* todo, unlocks hippie store */
+    'sold-ring-record': true,
+    'photo-seccam': true,
   },
   'audio-forge' : {
   },
   'blue-dream': {
-    'stained-shoelace': true,
-    'photo-jagged-knife': true,
-    'red-sneakers': true,
-    'jacked-knife': true,
   }
 }
 
@@ -137,14 +134,17 @@ var solutions = {
   'delaney-cane': ['flower-orders', 'flower-petals-victim'], /* DONE */
   'willow-bryce': ['dnd-party', 'dnd-poster', 'missing-nico'], /* DONE */
   /* clues to unlock places */
-  'morning-cafe': ['bakery-across-diner'], /* DONE */
+  'morning-cafe': ['bakery-across-diner'], /* DONE */ /* ADD SAFE */
   'bailey-diner': ['coop-diner', 'table-chairs'], /* DONE */
   'knight-antiques': ['visit-antiques', 'antiques-recipe'], /* DONE */
   'sprout': ['shopping-sprout', 'jewelry-shop-boy'], /* DONE */
-  'zinc-jewelers': ['donna-to-jeweler'], /* note saphire ring */
-  'readwell-books': ['flowers-present', 'camera-footage', 'check-bookshop'], /* DONE */
+  'zinc-jewelers': ['donna-to-jeweler', 'camera-footage'], /* DONE */
+  'readwell-books': ['flowers-present', 'check-bookshop'], /* DONE */
   'audio-forge': ['play-music', 'shop-down-street', 'invite-music'], /* DONE */
-  'blue-dream': ['wedding-ring', 'note-sold-ring'] /* NOT done */
+  'blue-dream': ['xxx-1', 'xxx-1', 'xxx-2'], /* DONE */
+  /* MURDERER */
+  'murderer-1': ['key-bd', 'good-friend', 'wedding-ring', 'sold-ring'],
+  'murderer-2': ['threat-letter', 'valuable-painting'],
 }
 
 var nameMappings = {
@@ -165,6 +165,9 @@ var nameMappings = {
   'readwell-books': 'Readwell Books',
   'audio-forge': "Audio Forge",
   'blue-dream': "Blue Dream",
+
+  'murderer-1': 'Murderer One',
+  'murderer-2': 'Murderer Two',
 }
 
 export default {

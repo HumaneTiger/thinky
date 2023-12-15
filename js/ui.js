@@ -33,18 +33,24 @@ export default {
 
   handleClick: function(ev) {
     var target = ev.target;
+    Audio.playAmbientLoop();
     if (target && target.classList.contains('button')) {
       if (target.id === 'button-desk') this.switchToDesk();
       if (target.id === 'button-persons') this.switchToPersons();
       if (target.id === 'button-places') this.switchToPlaces();
       if (target.id === 'button-end-day') this.endDay();
       if (target.id === 'button-lets-go') this.nextDay();
+      if (target.id === 'button-finale') this.triggerFinale();
+      if (target.id === 'button-go-back') this.stopFinale();
     }
   },
 
   handleKey: function(ev) {
     if (ev.key === '#') {
       ClueSnippets.cheat();
+    }
+    if (ev.key === 'h' || ev.key === 'H' ) {
+      document.getElementById('viewport').classList.toggle('highlight-clues');
     }
   },
 
@@ -99,133 +105,16 @@ export default {
     EndDay.nextDay();
   },
 
-  /*
-  handleHover: function(ev) {
-    var target = ev.target;
-    if (target && target.classList.contains('button') && startScreen.classList.contains('active')) {
-      Audio.sfx('up-2', 0, 0.1);
-    }
+  triggerFinale: function() {
+    Audio.sfx('click');
+    viewport.classList.add('finale');
+    EndDay.startFinale();
   },
 
-  handleClick: function(ev) {
-    var target = ev.target;
-    if (target && target.classList.contains('button') && startScreen.classList.contains('active')) {
-      ev.preventDefault();
-      Audio.sfx('up-1', 0, 1);
-      if (target.classList.contains('normal')) Props.setDifficulty('normal');
-      if (target.classList.contains('easy')) Props.setDifficulty('easy');
-      if (target.classList.contains('hard')) Props.setDifficulty('hard');
-      if (target.classList.contains('scarygrave')) Props.setGameProp('special', true);
-      if (target.classList.contains('switch')) {
-        document.getElementById('game-options').classList.add('out');
-        document.getElementById('special').classList.remove('out');
-      } else if (target.classList.contains('back')) {
-        document.getElementById('game-options').classList.remove('out');
-        document.getElementById('special').classList.add('out');
-      } else {
-        document.querySelector('ul.menu').classList.add('is--hidden');
-        document.querySelector('div.warning-container').classList.add('is--hidden');
-        document.querySelector('.wait-1').classList.remove('is--hidden');
-        document.querySelector('.wait-2').classList.remove('is--hidden');
-        window.setTimeout(() => {
-          this.resetGame();
-        }, 500);
-        window.setTimeout(() => {
-          startScreen.classList.remove('active');
-          Audio.playAmbientLoop();
-          startScreen.classList.add('is--hidden');
-          this.initCountdown();
-        }, 2000);  
-      }
-    }
+  stopFinale: function() {
+    Audio.sfx('click');
+    viewport.classList.remove('finale');
+    EndDay.stopFinale();
   },
 
-  initCountdown: function() {
-    countdownElement.querySelector('.big').textContent = '3';
-    window.setTimeout(() => {
-      countdownElement.querySelector('.big').textContent = '2';
-    }, 1000);
-    window.setTimeout(() => {
-      countdownElement.querySelector('.big').textContent = '1';
-    }, 2000);
-    window.setTimeout(() => {
-      countdownElement.querySelector('.big').textContent = 'GO!';
-      countdownElement.classList.add('go');
-      this.letsGOGOGO();
-    }, 3000);
-  },
-
-  letsGOGOGO: function() {
-    Props.setGameProp('gamePaused', false);
-    document.getElementById('front-plants').classList.add('autoscroll-anim');
-    document.getElementById('glow-plants').classList.add('autoscroll-anim');
-    document.getElementById('creeper-plants').classList.add('autoscroll-anim');
-    document.getElementById('background').classList.add('autoscroll-anim');
-    document.getElementById('walls').classList.add('walls-anim');
-    Props.setGameProp('particleSpeed', 3.6);
-  },
-  
-  gameOver: function() {
-    Props.setGameProp('gameOver', true);
-    Audio.sfx('game-over');
-    playerElement.classList.remove('flap');
-    playerElement.classList.add('dead');
-    window.setTimeout(() => {
-      document.getElementById('play-again').querySelector('.win').classList.add('is--hidden'); // hide win message
-      this.playAgain();
-    }, 2000);
-  },
-
-  gameWin: function() {
-    Props.setGameProp('gameOver', true);
-    Audio.sfx('win');
-    window.setTimeout(() => {
-      document.getElementById('play-again').querySelector('.win').classList.remove('is--hidden'); // show win message
-      this.playAgain();
-    }, 2000);
-  },
-
-  playAgain: function() {
-    if (Props.getGameProp('score') > Props.getGameProp('highScore')) {
-      Props.setGameProp('highScore', Math.floor(Props.getGameProp('score')));
-      document.getElementById('new-highscore').classList.remove('is--hidden');
-      document.getElementById('highscore').classList.add('is--hidden');
-      document.getElementById('highscore').querySelector('span').textContent = Props.getGameProp('highScore');
-    } else {
-      document.getElementById('highscore').classList.remove('is--hidden');
-    }
-    Props.setGameProp('particleSpeed', 0);
-    document.getElementById('play-again').classList.add('active');
-    window.setTimeout(() => {
-      uiActive = true;
-      this.resetGame();
-    }, 200);
-  },
-
-  handleKeydown: function() {
-    if (uiActive) {
-      uiActive = false;
-      document.getElementById('play-again').classList.remove('active');
-      document.getElementById('new-highscore').classList.add('is--hidden');
-      Player.updateScore();
-      document.getElementById('stars').innerHTML = '';
-      countdownElement.classList.remove('go');
-      this.initCountdown();
-    }
-  },
-
-  resetGame: function() {
-    document.getElementById('front-plants').classList.remove('autoscroll-anim');
-    document.getElementById('glow-plants').classList.remove('autoscroll-anim');
-    document.getElementById('creeper-plants').classList.remove('autoscroll-anim');
-    document.getElementById('background').classList.remove('autoscroll-anim');
-    document.getElementById('walls').classList.remove('walls-anim');
-    document.getElementById('final-blocker').classList.remove('active');
-    Props.resetGameProps();
-    playerElement.classList.remove('dead');
-    playerElement.classList.add('flap');
-    Start.init();
-    Player.reset();
-  }
-  */
 }

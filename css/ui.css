@@ -10,21 +10,21 @@
   position: absolute;
   left: 30px;
   top: 30px;
-  z-index: 5;
+  z-index: 22;
 }
 
 #controls .controls--bottom {
   position: absolute;
   right: 60px;
   bottom: 40px;
-  z-index: 5;
+  z-index: 22;
 }
 
 #day-count {
   position: absolute;
   right: 60px;
   top: 16px;
-  z-index: 5;
+  z-index: 22;
 }
 
 .headline {
@@ -88,15 +88,21 @@
 .button--peach {
   background-image: url(../img/ui/button-1.png);
 }
+.button--finale {
+  background-image: url(../img/ui/button-finale.png);
+}
 
 .button--white.button--noshadow {
   background-image: url(../img/ui/button-3-ns.png);
+  opacity: 0.7;
 }
 .button--blue.button--noshadow {
   background-image: url(../img/ui/button-2-ns.png);
+  opacity: 0.7;
 }
 .button--peach.button--noshadow {
   background-image: url(../img/ui/button-1-ns.png);
+  opacity: 0.7;
 }
 
 .spacing--big {
@@ -115,4 +121,13 @@
   background-size: 100% 4px;
   background-position: center bottom;
   background-repeat: no-repeat;
+}
+#viewport.highlight-clues .clue:not(.extracted) {
+  animation: pulseclue 4s infinite;
+}
+
+@keyframes pulseclue {
+  0% {background: rgba(225, 193, 195, 0);}
+  50% {background: rgba(225, 193, 195, 0.6);}
+  100% {background: rgba(225, 193, 195, 0);}
 }

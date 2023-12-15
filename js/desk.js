@@ -78,7 +78,7 @@ export default {
     }
   },
   typeFeedback: function(ev) {
-    Audio.sfx('typewriter-hit')
+    Audio.sfx('typewriter-hit');
   },
 
   handleDetectiveName: function(ev) {

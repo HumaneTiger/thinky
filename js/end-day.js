@@ -1,9 +1,11 @@
 import Props from './props.js'
+import Audio from './audio.js'
 import Persons from './persons.js'
 import Places from './places.js'
 import Desk from './desk.js'
 
 const endDayContainer = document.getElementById('end-day');
+const finaleContainer = document.getElementById('finale');
 const assistantsContainer = document.getElementById('assistants');
 const interrogationsContainer = document.getElementById('interrogations');
 const dayContainer = document.querySelector('#day-count .day');
@@ -35,15 +37,15 @@ export default {
     [...allAssistantChips].forEach(chip => {
       interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').src =  './img/end-day/nothing.png';
       if (chip.classList.contains('active')) {
-        const interriogatedPerson = chip.dataset.interrogation;
+        const interriogatedPersonOrPlace = chip.dataset.interrogation;
         interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').classList.remove('is--hidden');
         interrogationsContainer.classList.remove('out--right');
-        const newClueOrItem = Props.getNewThing(interriogatedPerson);
+        const newClueOrItem = Props.getNewThing(interriogatedPersonOrPlace);
         chip.classList.remove('active');
         if (newClueOrItem && newClueOrItem.type === 'clue') {
           interrogationsContainer.querySelector('.' + chip.id + ' .bgimg').src =  './img/end-day/new-entry.png';
-          Desk.addFinding(interriogatedPerson, newClueOrItem);
-          if (interriogatedPerson === 'nico-galanis') {
+          Desk.addFinding(interriogatedPersonOrPlace, newClueOrItem);
+          if (interriogatedPersonOrPlace === 'nico-galanis') {
             chip.querySelector('.speech-bubble--victim-clue').classList.remove('is--hidden');
           } else {
             chip.querySelector('.speech-bubble--clue').classList.remove('is--hidden');
@@ -58,10 +60,12 @@ export default {
           }
         } else {
           /* no findings */
-          const personContainerNothingNew = document.querySelector('#' + interriogatedPerson + ' .nothing-new');
+          const containerNothingNew = document.getElementById(interriogatedPersonOrPlace);
           chip.querySelector('.speech-bubble--nope').classList.remove('is--hidden');
-          if (personContainerNothingNew) {
-            personContainerNothingNew.classList.remove('is--hidden');
+          if (containerNothingNew.querySelector('.nothing-new')) {
+            containerNothingNew.querySelector('.nothing-new').classList.remove('is--hidden');
+          } else if (containerNothingNew.classList.contains('place--marker')) {
+            containerNothingNew.classList.add('nothing-new');
           }
         }
       } else {
@@ -103,5 +107,25 @@ export default {
     }
     Persons.unlockAll();
     Places.unlockAll();
+  },
+
+  startFinale: function() {
+    finaleContainer.classList.remove('out');
+  },
+
+  stopFinale: function() {
+    finaleContainer.classList.add('out');
+  },
+
+  caseSolved: function() {
+    window.setTimeout(() => {
+      Audio.sfx('solved', 0, 1);
+      document.querySelector('#finale h1').textContent = "Case solved!";
+      document.getElementById('murderer-1').style.top = '140px';
+      document.getElementById('murderer-2').style.top = '140px';
+      document.getElementById('button-go-back').classList.add('is--hidden');
+      document.getElementById('content-solved').style.opacity = '1';
+    }, 500);
   }
+
 }
